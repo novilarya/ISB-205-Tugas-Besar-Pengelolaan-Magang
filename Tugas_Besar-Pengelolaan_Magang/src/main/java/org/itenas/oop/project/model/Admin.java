@@ -7,6 +7,7 @@ package org.itenas.oop.project.model;
 public class Admin {
     private String idAdmin;
     private String username;
+    //text
     private String password;
     private String nama;
 
