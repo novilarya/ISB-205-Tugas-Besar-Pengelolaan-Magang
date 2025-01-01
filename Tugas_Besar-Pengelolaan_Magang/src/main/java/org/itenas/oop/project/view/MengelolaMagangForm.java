@@ -44,7 +44,35 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
         }
     }
     
-    
+    private void clearData(){
+        txtJudulPenyelenggara.setText("");
+        txtLokasiPenyelenggara.setText("");
+        txtPosisiPenyelenggara.setText("");
+        txtDeskripsiPenyelenggara.setText("");
+        txtKualifikasiPenyelenggara.setText("");
+        txtJudulPenyelenggara.setEditable(true);
+        txtLokasiPenyelenggara.setEditable(true);
+        txtPosisiPenyelenggara.setEditable(true);
+        txtDeskripsiPenyelenggara.setEditable(true);
+        txtKualifikasiPenyelenggara.setEditable(true);
+    }    
+ 
+    private void tampilkanDataMagang(String judulMagang){
+        Magang magang = new Magang();
+        magang = conMagang.mencariBerdasarkanJudul(judulMagang);
+        
+        
+        DefaultTableModel dtm = (DefaultTableModel) tabelMagang.getModel();
+        dtm.setRowCount(0);
+        
+        if (magang != null){
+            String[] data = new String[1];
+            data[0] = magang.getJudulMagang();
+            dtm.addRow(data);
+        }else{
+            JOptionPane.showMessageDialog(null,"Barang dengan judul " + judulMagang + " tidak ditemukan!");
+        }
+    }    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -192,6 +220,11 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
         txtTipeMagang.setForeground(new java.awt.Color(51, 51, 51));
         txtTipeMagang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full Time", "Part Time" }));
         txtTipeMagang.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(191, 191, 191), 1, true));
+        txtTipeMagang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTipeMagangActionPerformed(evt);
+            }
+        });
 
         btnClear.setBackground(new java.awt.Color(153, 204, 255));
         btnClear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -399,15 +432,16 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         try {
-            String kodeBarang = txtSearchJudulMagang.getText();
-            tampilkanDataBarang(kodeBarang);
+            String judulMagang = txtSearchJudulMagang.getText();
+            tampilkanDataMagang(judulMagang);
             
         }catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(null, "Anda Salah Memasukkan ID!");
+            JOptionPane.showMessageDialog(null, "Anda Salah Memasukkan Judul!");
         }
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        clearData();
         getData();
     }//GEN-LAST:event_btnClearActionPerformed
 
@@ -419,33 +453,40 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
             return;
         }
 
-        String kodeBarang = tableBarang.getModel().getValueAt(i, 0).toString();
-        String oldNama = tableBarang.getModel().getValueAt(i, 1).toString();
-        String oldDeskripsi = tableBarang.getModel().getValueAt(i, 2).toString();
+        String kodeMagang = tabelMagang.getModel().getValueAt(i, 0).toString();
+        String judulMagang = tabelMagang.getModel().getValueAt(i, 1).toString();
+        String penyelenggara = tabelMagang.getModel().getValueAt(i, 2).toString();
+        String lokasi = tabelMagang.getModel().getValueAt(i, 3).toString();
+        String tipeMagang = tabelMagang.getModel().getValueAt(i, 4).toString();
+        String posisiMagang = tabelMagang.getModel().getValueAt(i, 5).toString();
+        String deskripsiMagang = tabelMagang.getModel().getValueAt(i, 6).toString();
+        String kualifikasiMagang = tabelMagang.getModel().getValueAt(i, 7).toString();
+        
+        String newJudul = txtJudulPenyelenggara.getText();
+        String newLokasi = txtLokasiPenyelenggara.getText();
+        String newTipe = (String)txtTipeMagang.getSelectedItem();
+        String newPosisi = txtPosisiPenyelenggara.getText();
+        String newDeskripsi = txtDeskripsiPenyelenggara.getText();
+        String newKualifikasi = txtKualifikasiPenyelenggara.getText();
 
-        double oldHarga = Double.parseDouble(tableBarang.getModel().getValueAt(i, 3).toString());
-
-        String newKodeBarang = txtKodeBarang.getText();
-        String newNamaBarang = txtNamaBarang.getText();
-        String newDeskripsi = txtDeskripsiBarang.getText();
-        double newHarga = Double.parseDouble(txtHargaBarang.getText());
-
-        hasil = conSupermarket.updateBarang(newKodeBarang, newNamaBarang, newDeskripsi, newHarga);
+        hasil = conMagang.updateMagang(judulMagang, lokasi, tipeMagang, posisiMagang, deskripsiMagang, kualifikasiMagang);
         getData();
         clearData();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        int i = tableBarang.getSelectedRow();
+        int i = tabelMagang.getSelectedRow();
 
-        String kodeBarang = tableBarang.getModel().getValueAt(i, 0).toString();
-        conSupermarket.deleteBarang(kodeBarang);
+        String judulMagang = tabelMagang.getModel().getValueAt(i, 1).toString();
+        conMagang.deleteMagang(judulMagang);
         getData();
         clearData();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-        hasil = conSupermarket.insertBarang(txtKodeBarang.getText(), txtNamaBarang.getText(), txtDeskripsiBarang.getText(), Double.parseDouble(txtHargaBarang.getText()));
+        String penyelenggara = "Samsul";
+        
+        hasil = conMagang.insertMagang(txtJudulPenyelenggara.getText(), penyelenggara, txtLokasiPenyelenggara.getText(), (String)txtTipeMagang.getSelectedItem(), txtPosisiPenyelenggara.getText(), txtDeskripsiPenyelenggara.getText(), txtKualifikasiPenyelenggara.getText());
         if (hasil){
             JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
             getData();
@@ -454,6 +495,10 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Data gagal ditambahkan", " Pesan", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void txtTipeMagangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipeMagangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTipeMagangActionPerformed
 
     /**
      * @param args the command line arguments

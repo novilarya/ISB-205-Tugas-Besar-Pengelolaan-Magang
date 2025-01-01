@@ -33,10 +33,9 @@ public class ControllerMagang {
         }  
     }
 
-    public boolean updateMagang(String judulMagang, String penyelenggara, String lokasi, String tipeMagang, String posisiMagang, String deskripsiMagang, String kualifikasiMagang){
+    public boolean updateMagang(String judulMagang, String lokasi, String tipeMagang, String posisiMagang, String deskripsiMagang, String kualifikasiMagang){
         String query = "UPDATE daftarmagang SET judul = '"
-                + judulMagang + "', penyelenggara = '"
-                + penyelenggara + "', lokasi = '"
+                + judulMagang + "', lokasi = '"
                 + lokasi + "', tipe = '"
                 + tipeMagang + "', posisi = '"
                 + posisiMagang + "', deskripsi = '"
