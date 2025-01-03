@@ -15,6 +15,8 @@ public class LoginAdminForm extends javax.swing.JFrame {
      */
     public LoginAdminForm() {
         initComponents();
+        //text
+        //text
     }
 
     /**
