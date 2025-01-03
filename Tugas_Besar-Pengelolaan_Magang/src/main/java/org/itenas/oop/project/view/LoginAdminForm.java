@@ -17,6 +17,37 @@ public class LoginAdminForm extends javax.swing.JFrame {
     public LoginAdminForm() {
         initComponents();
         setLocationRelativeTo(null);
+        
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+    public void keyPressed(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            LoginAction(); // Panggil metode login
+        }
+    }
+});
+
+        txtUsername.addKeyListener(new java.awt.event.KeyAdapter() {
+    public void keyPressed(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            txtPassword.requestFocus(); // Pindahkan fokus ke password
+        }
+    }
+});
+    }
+    
+    
+    public void LoginAction(){
+    String username = txtUsername.getText();
+        String password = String.valueOf(txtPassword.getPassword());
+        String nama = conLog.Login(username, password);
+        
+        if (nama != null){
+            JOptionPane.showMessageDialog(null, "Login berhasil, Selamat datang " + nama, "Pesan", JOptionPane.INFORMATION_MESSAGE);
+            new MainAdminForm().setVisible(true);
+            dispose();
+        }else {
+            JOptionPane.showMessageDialog(null,"Username atau password yang Anda masukan salah.", "Pesan", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
     
     public void showPassword(){
@@ -47,8 +78,6 @@ public class LoginAdminForm extends javax.swing.JFrame {
         txtUsername = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         btnLogIn = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        txtRegister = new javax.swing.JLabel();
         cbShowPass = new javax.swing.JCheckBox();
         txtPassword = new javax.swing.JPasswordField();
 
@@ -109,17 +138,6 @@ public class LoginAdminForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setForeground(new java.awt.Color(19, 16, 16));
-        jLabel4.setText("Belum punya akun?, Silahkan ");
-
-        txtRegister.setForeground(new java.awt.Color(77, 161, 169));
-        txtRegister.setText("Registrasi");
-        txtRegister.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtRegisterMouseClicked(evt);
-            }
-        });
-
         cbShowPass.setBackground(new java.awt.Color(255, 255, 255));
         cbShowPass.setForeground(new java.awt.Color(19, 16, 16));
         cbShowPass.setText("Show Password");
@@ -141,26 +159,18 @@ public class LoginAdminForm extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(111, 111, 111)
-                                .addComponent(txtLogin))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cbShowPass)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(txtUsername)
-                                    .addComponent(btnLogIn, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
-                                    .addComponent(txtPassword))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(111, 111, 111)
+                        .addComponent(txtLogin))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtRegister)
-                        .addGap(56, 56, 56))))
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbShowPass)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(txtUsername)
+                            .addComponent(btnLogIn, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                            .addComponent(txtPassword))))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,10 +192,6 @@ public class LoginAdminForm extends javax.swing.JFrame {
                 .addComponent(cbShowPass)
                 .addGap(34, 34, 34)
                 .addComponent(btnLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtRegister))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -212,22 +218,8 @@ public class LoginAdminForm extends javax.swing.JFrame {
 
     private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
         // TODO add your handling code here:
-        int stat = conLog.Login(txtUsername.getText(), String.valueOf(txtPassword.getPassword()));
-        
-        if (stat == 1) {
-            JOptionPane.showMessageDialog(null, "Login berhasil", "Pesan", JOptionPane.INFORMATION_MESSAGE);
-            new MainAdminForm().setVisible(true);
-            dispose();
-        }else{
-            JOptionPane.showMessageDialog(null, "Username atau password yang anda masukan salah", "Pesan", JOptionPane.INFORMATION_MESSAGE);
-        }
+        LoginAction();
     }//GEN-LAST:event_btnLogInActionPerformed
-
-    private void txtRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtRegisterMouseClicked
-        // TODO add your handling code here:
-        new RegisterAdminForm().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_txtRegisterMouseClicked
 
     private void cbShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbShowPassActionPerformed
         // TODO add your handling code here:
@@ -274,12 +266,10 @@ public class LoginAdminForm extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbShowPass;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel txtLogin;
     private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JLabel txtRegister;
     private javax.swing.JLabel txtSelamatDatang;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables

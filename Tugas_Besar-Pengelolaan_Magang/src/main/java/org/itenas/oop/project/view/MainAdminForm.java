@@ -28,7 +28,7 @@ public class MainAdminForm extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        txtHelloAdmin = new javax.swing.JLabel();
         btnMelihatDaftarMagang = new javax.swing.JButton();
         btnTambahAdmin = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -36,16 +36,18 @@ public class MainAdminForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(201, 104, 104));
 
-        jPanel2.setBackground(new java.awt.Color(77, 161, 169));
+        jPanel2.setBackground(new java.awt.Color(255, 244, 234));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jPanel2.setPreferredSize(new java.awt.Dimension(840, 656));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setText("Hello Admin");
+        txtHelloAdmin.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtHelloAdmin.setText("Hello Admin");
 
-        btnMelihatDaftarMagang.setBackground(new java.awt.Color(46, 80, 119));
+        btnMelihatDaftarMagang.setBackground(new java.awt.Color(126, 172, 181));
         btnMelihatDaftarMagang.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnMelihatDaftarMagang.setForeground(new java.awt.Color(0, 0, 0));
         btnMelihatDaftarMagang.setText("Melihat Daftar calon magang");
         btnMelihatDaftarMagang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,8 +55,9 @@ public class MainAdminForm extends javax.swing.JFrame {
             }
         });
 
-        btnTambahAdmin.setBackground(new java.awt.Color(46, 80, 119));
+        btnTambahAdmin.setBackground(new java.awt.Color(126, 172, 181));
         btnTambahAdmin.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnTambahAdmin.setForeground(new java.awt.Color(0, 0, 0));
         btnTambahAdmin.setText("Tambah Admin");
         btnTambahAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,26 +70,26 @@ public class MainAdminForm extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(btnMelihatDaftarMagang, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
-                .addComponent(btnTambahAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(jLabel3)
+                .addContainerGap()
+                .addComponent(txtHelloAdmin)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(btnTambahAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                .addComponent(btnMelihatDaftarMagang, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel3)
-                .addGap(70, 70, 70)
+                .addContainerGap()
+                .addComponent(txtHelloAdmin)
+                .addGap(212, 212, 212)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnMelihatDaftarMagang, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTambahAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(351, Short.MAX_VALUE))
+                    .addComponent(btnMelihatDaftarMagang, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTambahAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(303, Short.MAX_VALUE))
         );
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
@@ -108,7 +111,7 @@ public class MainAdminForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 960, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,13 +140,13 @@ public class MainAdminForm extends javax.swing.JFrame {
 
     private void btnTambahAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahAdminActionPerformed
         // TODO add your handling code here:
-        new MelihatDaftarMagangAdminDanPenyelenggara().setVisible(true);
+        new TambahAdminForm().setVisible(true);
         dispose(); 
     }//GEN-LAST:event_btnTambahAdminActionPerformed
 
     private void btnMelihatDaftarMagangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMelihatDaftarMagangActionPerformed
         // TODO add your handling code here:
-        new TambahAdminForm().setVisible(true);
+        new MelihatDaftarMagangAdminDanPenyelenggara().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnMelihatDaftarMagangActionPerformed
 
@@ -187,8 +190,8 @@ public class MainAdminForm extends javax.swing.JFrame {
     private javax.swing.JButton btnTambahAdmin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel txtHelloAdmin;
     // End of variables declaration//GEN-END:variables
 }
