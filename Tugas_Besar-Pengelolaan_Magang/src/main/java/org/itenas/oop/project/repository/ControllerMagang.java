@@ -18,29 +18,54 @@ public class ControllerMagang {
     Scanner input = new Scanner(System.in);
     ConnectionManager conMan = new ConnectionManager();
     Connection con = conMan.connectDb();
+    String penyelenggara = null;
     
-    public boolean insertMagang(String judulMagang, String penyelenggara, String lokasi, String tipeMagang, String posisiMagang, String deskripsiMagang, String kualifikasiMagang){
-        String query = "INSERT INTO daftarmagang "
-                + "(judul, penyelenggara, lokasi, tipe, posisi, deksripsi, kualifikasi)"
-                + "values ('" + judulMagang + "', '" + penyelenggara + "', '" + lokasi + "', '" + tipeMagang + "', '" + posisiMagang + "', '" + deskripsiMagang + "', '" + kualifikasiMagang + "')";
+    public String mengambilInstansi() throws SQLException{
+        conMan = new ConnectionManager();
+        String instansi = null;       
+        Connection conn = conMan.connectDb();
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT instansi from tempinstansi");
+        
+        try {
+            while (rs.next()){
+                instansi = rs.getString("instansi");
+            }             
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        return instansi;
+    }
+    
+    public boolean insertMagang(String judulMagang, String lokasi, String tipeMagang, String posisiMagang, String deskripsiMagang, String kualifikasiMagang){        
+       
         try {
             Statement stm = con.createStatement();
-            stm.executeUpdate(query);
+            String penyelenggara = mengambilInstansi();
+            String query2 = "INSERT INTO daftarmagang "
+                + "(judul, penyelenggara, lokasi, tipe, posisi, deskripsi, kualifikasi)"
+                + "values ('" + judulMagang + "', '" + penyelenggara + "', '" + lokasi + "', '" + tipeMagang + "', '" + posisiMagang + "', '" + deskripsiMagang + "', '" + kualifikasiMagang + "')";
+        
+            stm.executeUpdate(query2);
+            
             return true;
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             return false;
-        }  
+        } 
+           
     }
 
-    public boolean updateMagang(String judulMagang, String lokasi, String tipeMagang, String posisiMagang, String deskripsiMagang, String kualifikasiMagang){
+    public boolean updateMagang(String judulMagang, String penyelenggara, String lokasi, String tipeMagang, String posisiMagang, String deskripsiMagang, String kualifikasiMagang, String judul){
         String query = "UPDATE daftarmagang SET judul = '"
-                + judulMagang + "', lokasi = '"
+                + judulMagang + "', penyelenggara = '"
+                + penyelenggara + "', lokasi = '"                
                 + lokasi + "', tipe = '"
                 + tipeMagang + "', posisi = '"
                 + posisiMagang + "', deskripsi = '"
                 + deskripsiMagang + "', kualifikasi = '"
-                + kualifikasiMagang + "'";
+                + kualifikasiMagang + "' WHERE judul = '"
+                + judul + "'";
         try {
             Statement stm = con.createStatement();
             stm.executeUpdate(query);
@@ -67,9 +92,15 @@ public class ControllerMagang {
         Magang magang = new Magang();
         try{
             Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM magang WHERE judul = '" + judulMagang + "'");
+            ResultSet rs = stm.executeQuery("SELECT * FROM daftarmagang WHERE judul LIKE '%" + judulMagang + "%'");
             while (rs.next()){
                 magang.setJudulMagang(rs.getString("judul"));
+                magang.setPenyelenggara(rs.getString("penyelenggara"));
+                magang.setLokasi(rs.getString("lokasi"));
+                magang.setTipeMagang(rs.getString("tipe"));
+                magang.setPosisiMagang(rs.getString("posisi"));
+                magang.setDeskripsiMagang(rs.getString("deskripsi"));
+                magang.setKualifikasiMagang(rs.getString("kualifikasi"));
             }
         }catch(SQLException ex){
             System.out.println(ex.toString());
@@ -84,7 +115,6 @@ public class ControllerMagang {
             ResultSet rs = stm.executeQuery("SELECT * FROM daftarmagang");
             while (rs.next()) {                
                 Magang magang = new Magang();
-                magang.setKodeMagang(rs.getString("kode"));
                 magang.setJudulMagang(rs.getString("judul"));
                 magang.setPenyelenggara(rs.getString("penyelenggara"));
                 magang.setLokasi(rs.getString("lokasi"));

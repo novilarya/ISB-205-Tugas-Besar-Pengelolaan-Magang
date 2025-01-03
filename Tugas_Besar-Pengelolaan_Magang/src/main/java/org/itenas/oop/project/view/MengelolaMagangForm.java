@@ -4,9 +4,16 @@
  */
 package org.itenas.oop.project.view;
 
+import com.mysql.cj.protocol.Resultset;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import org.itenas.oop.project.connection.ConnectionManager;
 import org.itenas.oop.project.model.Magang;
 import org.itenas.oop.project.repository.ControllerMagang;
 
@@ -18,9 +25,23 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
     Boolean hasil;
     ControllerMagang conMagang = new ControllerMagang();
     private DefaultTableModel model;
+    private ConnectionManager conMan;
+    private Connection conn;
 
     public MengelolaMagangForm() {
         initComponents();
+        
+        model = new DefaultTableModel();
+        tabelMagang.setModel(model);
+        
+        model.addColumn("Judul");
+        model.addColumn("Penyelenggara");
+        model.addColumn("Lokasi");
+        model.addColumn("Tipe");
+        model.addColumn("Posisi");
+        model.addColumn("Deskripsi");
+        model.addColumn("Kualifikasi");
+        getData();
     }
     
 
@@ -30,16 +51,15 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
         dtm.setRowCount(0);
 
         List<Magang> listMagang = conMagang.showMagang();
-        String[] data = new String[4];
+        String[] data = new String[8];
         for (Magang newMagang : listMagang){
-            data[0] = newMagang.getKodeMagang();
-            data[1] = newMagang.getJudulMagang();
-            data[2] = newMagang.getPenyelenggara();
-            data[3] = newMagang.getLokasi();
-            data[4] = newMagang.getTipeMagang();
-            data[5] = newMagang.getPosisiMagang();
-            data[6] = newMagang.getDeskripsiMagang();
-            data[7] = newMagang.getKualifikasiMagang();
+            data[0] = newMagang.getJudulMagang();
+            data[1] = newMagang.getPenyelenggara();
+            data[2] = newMagang.getLokasi();
+            data[3] = newMagang.getTipeMagang();
+            data[4] = newMagang.getPosisiMagang();
+            data[5] = newMagang.getDeskripsiMagang();
+            data[6] = newMagang.getKualifikasiMagang();
             dtm.addRow(data);
         }
     }
@@ -66,8 +86,14 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
         dtm.setRowCount(0);
         
         if (magang != null){
-            String[] data = new String[1];
+            String[] data = new String[7];
             data[0] = magang.getJudulMagang();
+            data[1] = magang.getPenyelenggara();
+            data[2] = magang.getLokasi();
+            data[3] = magang.getTipeMagang();
+            data[4] = magang.getPosisiMagang();
+            data[5] = magang.getDeskripsiMagang();
+            data[6] = magang.getKualifikasiMagang();
             dtm.addRow(data);
         }else{
             JOptionPane.showMessageDialog(null,"Barang dengan judul " + judulMagang + " tidak ditemukan!");
@@ -273,15 +299,20 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
         tabelMagang.setBackground(new java.awt.Color(239, 239, 239));
         tabelMagang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Judul Magang"
+                "Judul", "Penyelenggara", "Lokasi", "Tipe", "Posisi", "Deskripsi", "Kualifikasi"
             }
         ));
+        tabelMagang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelMagangMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelMagang);
 
         btnSubmit.setBackground(new java.awt.Color(153, 153, 255));
@@ -453,14 +484,13 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
             return;
         }
 
-        String kodeMagang = tabelMagang.getModel().getValueAt(i, 0).toString();
-        String judulMagang = tabelMagang.getModel().getValueAt(i, 1).toString();
-        String penyelenggara = tabelMagang.getModel().getValueAt(i, 2).toString();
-        String lokasi = tabelMagang.getModel().getValueAt(i, 3).toString();
-        String tipeMagang = tabelMagang.getModel().getValueAt(i, 4).toString();
-        String posisiMagang = tabelMagang.getModel().getValueAt(i, 5).toString();
-        String deskripsiMagang = tabelMagang.getModel().getValueAt(i, 6).toString();
-        String kualifikasiMagang = tabelMagang.getModel().getValueAt(i, 7).toString();
+        String judulMagang = tabelMagang.getModel().getValueAt(i, 0).toString();
+        String penyelenggara = tabelMagang.getModel().getValueAt(i, 1).toString();
+        String lokasi = tabelMagang.getModel().getValueAt(i, 2).toString();
+        String tipeMagang = tabelMagang.getModel().getValueAt(i, 3).toString();
+        String posisiMagang = tabelMagang.getModel().getValueAt(i, 4).toString();
+        String deskripsiMagang = tabelMagang.getModel().getValueAt(i, 5).toString();
+        String kualifikasiMagang = tabelMagang.getModel().getValueAt(i, 6).toString();
         
         String newJudul = txtJudulPenyelenggara.getText();
         String newLokasi = txtLokasiPenyelenggara.getText();
@@ -469,7 +499,7 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
         String newDeskripsi = txtDeskripsiPenyelenggara.getText();
         String newKualifikasi = txtKualifikasiPenyelenggara.getText();
 
-        hasil = conMagang.updateMagang(judulMagang, lokasi, tipeMagang, posisiMagang, deskripsiMagang, kualifikasiMagang);
+        hasil = conMagang.updateMagang(newJudul, penyelenggara, newLokasi, newTipe, newPosisi, newDeskripsi, newKualifikasi, judulMagang);
         getData();
         clearData();
     }//GEN-LAST:event_btnUpdateActionPerformed
@@ -477,16 +507,14 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         int i = tabelMagang.getSelectedRow();
 
-        String judulMagang = tabelMagang.getModel().getValueAt(i, 1).toString();
+        String judulMagang = tabelMagang.getModel().getValueAt(i, 0).toString();
         conMagang.deleteMagang(judulMagang);
         getData();
         clearData();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-        String penyelenggara = "Samsul";
-        
-        hasil = conMagang.insertMagang(txtJudulPenyelenggara.getText(), penyelenggara, txtLokasiPenyelenggara.getText(), (String)txtTipeMagang.getSelectedItem(), txtPosisiPenyelenggara.getText(), txtDeskripsiPenyelenggara.getText(), txtKualifikasiPenyelenggara.getText());
+        hasil = conMagang.insertMagang(txtJudulPenyelenggara.getText(), txtLokasiPenyelenggara.getText(), (String)txtTipeMagang.getSelectedItem(), txtPosisiPenyelenggara.getText(), txtDeskripsiPenyelenggara.getText(), txtKualifikasiPenyelenggara.getText());
         if (hasil){
             JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
             getData();
@@ -499,6 +527,19 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
     private void txtTipeMagangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipeMagangActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTipeMagangActionPerformed
+
+    private void tabelMagangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMagangMouseClicked
+        int i = tabelMagang.getSelectedRow();
+        
+        TableModel model = tabelMagang.getModel();
+        
+        txtJudulPenyelenggara.setText(model.getValueAt(i, 0).toString());
+        txtLokasiPenyelenggara.setText(model.getValueAt(i, 2).toString());
+        txtTipeMagang.setSelectedItem(model.getValueAt(i, 3).toString());
+        txtPosisiPenyelenggara.setText(model.getValueAt(i, 4).toString());
+        txtDeskripsiPenyelenggara.setText(model.getValueAt(i, 5).toString());
+        txtKualifikasiPenyelenggara.setText(model.getValueAt(i, 6).toString());
+    }//GEN-LAST:event_tabelMagangMouseClicked
 
     /**
      * @param args the command line arguments

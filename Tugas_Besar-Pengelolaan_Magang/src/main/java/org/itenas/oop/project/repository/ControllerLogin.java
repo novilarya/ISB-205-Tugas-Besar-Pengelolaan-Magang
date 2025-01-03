@@ -25,13 +25,19 @@ public class ControllerLogin {
         conn = conMan.connectDb();
         try {
             Statement stm = conn.createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM akun where username = '" + user + "' and password = '" + pwd + "'");
-            while (rs.next()){
-                if (user.equals(rs.getString("username")) && pwd.equals(rs.getString("password"))){
+            ResultSet rs = stm.executeQuery("SELECT * FROM daftarpenyelenggara where username = '" + user + "' and password = '" + pwd + "'");
+            while (rs.next()) {
+                if (user.equals(rs.getString("username")) && pwd.equals(rs.getString("password"))) {
                     stat = 1;
-                }else{
+                } else {
                     stat = 0;
                 }
+                
+                String instansi = rs.getString("instansi");
+
+                String insertQuery = "INSERT INTO tempinstansi (instansi) VALUES ('" + instansi + "')";
+                stm.executeUpdate(insertQuery);
+
             }
             return stat;
         }catch(SQLException ex){
@@ -39,14 +45,16 @@ public class ControllerLogin {
         }
     }
     
-    public int registerPenyelenggara(String user, String pwd){
+    public int registerPenyelenggara(String nama, String instansi, String user, String pwd){
         int stat = 0;
-        String query = "INSERT INTO akun (username, password) VALUES ('" + user + "', '" + pwd + "');";
+        String query = "INSERT INTO daftarpenyelenggara (nama, instansi, username, password) VALUES ('" + nama + "', '" + instansi + "', '" + user + "', '" + pwd + "');";
+        String query2 = "INSERT INTO tempinstansi values ('" + instansi + "')"; 
         conMan = new ConnectionManager();
         conn = conMan.connectDb();
         try {
             stmt = conn.createStatement();
             stmt.executeUpdate(query);
+            stmt.executeUpdate(query2);
             conMan.disconnectDb(conn);
         } catch (SQLException ex){
             System.out.println("error: " + ex.getMessage());

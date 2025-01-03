@@ -49,6 +49,10 @@ public class RegisterPenyelenggaraForm extends javax.swing.JFrame {
         btnRegister = new javax.swing.JButton();
         textLoginPenyelenggara = new javax.swing.JLabel();
         textSudahPunyaAkun = new javax.swing.JLabel();
+        txtNama = new javax.swing.JTextField();
+        textNama = new javax.swing.JLabel();
+        txtInstansiPenyelenggara = new javax.swing.JTextField();
+        textInstansiPenyelenggara = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,6 +120,32 @@ public class RegisterPenyelenggaraForm extends javax.swing.JFrame {
         textSudahPunyaAkun.setForeground(new java.awt.Color(51, 51, 51));
         textSudahPunyaAkun.setText("Sudah punya akun?");
 
+        txtNama.setBackground(new java.awt.Color(239, 239, 239));
+        txtNama.setForeground(new java.awt.Color(51, 51, 51));
+        txtNama.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(191, 191, 191), 1, true));
+        txtNama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNamaActionPerformed(evt);
+            }
+        });
+
+        textNama.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        textNama.setForeground(new java.awt.Color(51, 51, 51));
+        textNama.setText("Nama");
+
+        txtInstansiPenyelenggara.setBackground(new java.awt.Color(239, 239, 239));
+        txtInstansiPenyelenggara.setForeground(new java.awt.Color(51, 51, 51));
+        txtInstansiPenyelenggara.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(191, 191, 191), 1, true));
+        txtInstansiPenyelenggara.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtInstansiPenyelenggaraActionPerformed(evt);
+            }
+        });
+
+        textInstansiPenyelenggara.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        textInstansiPenyelenggara.setForeground(new java.awt.Color(51, 51, 51));
+        textInstansiPenyelenggara.setText("Instansi Penyelenggara");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -123,38 +153,51 @@ public class RegisterPenyelenggaraForm extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(textSelamatDatang))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textNama, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtUsernamePenyelenggara)
+                                .addComponent(textPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtInstansiPenyelenggara, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textInstansiPenyelenggara, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(61, 61, 61)
+                                .addComponent(textSudahPunyaAkun)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textLoginPenyelenggara))
                             .addComponent(cbShowPassword)
-                            .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUsernamePenyelenggara, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
-                            .addComponent(textPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPassword)
-                            .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(textSudahPunyaAkun)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textLoginPenyelenggara)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addGap(72, 72, 72)
+                        .addComponent(textSelamatDatang)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(122, 122, 122)
+                .addGap(66, 66, 66)
                 .addComponent(textSelamatDatang)
-                .addGap(37, 37, 37)
+                .addGap(35, 35, 35)
+                .addComponent(textNama)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(textInstansiPenyelenggara)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtInstansiPenyelenggara, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
                 .addComponent(textUsername)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUsernamePenyelenggara, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(textPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbShowPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -162,7 +205,7 @@ public class RegisterPenyelenggaraForm extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textLoginPenyelenggara)
                     .addComponent(textSudahPunyaAkun))
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -201,7 +244,7 @@ public class RegisterPenyelenggaraForm extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        conLog.registerPenyelenggara(txtUsernamePenyelenggara.getText(), String.valueOf(txtPassword.getPassword()));
+        conLog.registerPenyelenggara(txtNama.getText(), txtInstansiPenyelenggara.getText(), txtUsernamePenyelenggara.getText(), String.valueOf(txtPassword.getPassword()));
         JOptionPane.showMessageDialog(null, "Regist berhasil", "Pesan", JOptionPane.INFORMATION_MESSAGE);
         new LoginPenyelenggaraForm().setVisible(true);
         new RegisterPenyelenggaraForm().setVisible(false);
@@ -216,6 +259,14 @@ public class RegisterPenyelenggaraForm extends javax.swing.JFrame {
         new RegisterPenyelenggaraForm().setVisible(false);
         dispose();  
     }//GEN-LAST:event_textLoginPenyelenggaraMouseClicked
+
+    private void txtNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNamaActionPerformed
+
+    private void txtInstansiPenyelenggaraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInstansiPenyelenggaraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtInstansiPenyelenggaraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,11 +308,15 @@ public class RegisterPenyelenggaraForm extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbShowPassword;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel textInstansiPenyelenggara;
     private javax.swing.JLabel textLoginPenyelenggara;
+    private javax.swing.JLabel textNama;
     private javax.swing.JLabel textPassword;
     private javax.swing.JLabel textSelamatDatang;
     private javax.swing.JLabel textSudahPunyaAkun;
     private javax.swing.JLabel textUsername;
+    private javax.swing.JTextField txtInstansiPenyelenggara;
+    private javax.swing.JTextField txtNama;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsernamePenyelenggara;
     // End of variables declaration//GEN-END:variables
