@@ -9,15 +9,51 @@ import org.itenas.oop.project.repository.ControllerLogin;
  *
  * @author aryan
  */
-public class RegisterAdminForm extends javax.swing.JFrame {
+public class RegistAdminForm extends javax.swing.JFrame {
     Boolean hasil;
     ControllerLogin conLog = new ControllerLogin();
     /**
      * Creates new form RegisterAdminForm
      */
-    public RegisterAdminForm() {
+    public RegistAdminForm() {
         initComponents();
         setLocationRelativeTo(null);
+        
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+    public void keyPressed(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            RegistAction();
+        }
+    }
+});
+
+        txtUsername.addKeyListener(new java.awt.event.KeyAdapter() {
+    public void keyPressed(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            txtPassword.requestFocus(); // Pindahkan fokus ke password
+        }
+    }
+});
+        txtNama.addKeyListener(new java.awt.event.KeyAdapter() {
+    public void keyPressed(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            txtUsername.requestFocus(); // Pindahkan fokus ke password
+        }
+    }
+});
+    }
+    
+    public void RegistAction(){
+        String user = txtUsername.getText();
+        String pass = txtPassword.getText();
+        String nama = txtNama.getText();
+        
+        conLog.register(nama, user, pass);
+        System.out.println("Tambah Admin berhasil");
+        
+        JOptionPane.showMessageDialog(null, "Regist berhasil", "Pesan", JOptionPane.INFORMATION_MESSAGE);
+        new LoginAdminForm().setVisible(true);
+        dispose();
     }
     
     public void showPassword(){
@@ -51,6 +87,8 @@ public class RegisterAdminForm extends javax.swing.JFrame {
         btnRegis = new javax.swing.JToggleButton();
         txt_Login = new javax.swing.JLabel();
         cbShowPass = new javax.swing.JCheckBox();
+        jLabel6 = new javax.swing.JLabel();
+        txtNama = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,12 +113,12 @@ public class RegisterAdminForm extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(542, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(19, 16, 16));
-        jLabel2.setText("REGISTER");
+        jLabel2.setText("REGIST");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(19, 16, 16));
@@ -105,7 +143,7 @@ public class RegisterAdminForm extends javax.swing.JFrame {
         txtPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(77, 161, 169)));
 
         btnRegis.setBackground(new java.awt.Color(77, 161, 169));
-        btnRegis.setText("Register");
+        btnRegis.setText("Regist");
         btnRegis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisActionPerformed(evt);
@@ -128,6 +166,13 @@ public class RegisterAdminForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(19, 16, 16));
+        jLabel6.setText("Nama");
+
+        txtNama.setBackground(new java.awt.Color(255, 255, 255));
+        txtNama.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(77, 161, 169)));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -136,34 +181,38 @@ public class RegisterAdminForm extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(84, 84, 84)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbShowPass)
-                                    .addComponent(btnRegis, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(24, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(88, 88, 88))))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbShowPass)
+                            .addComponent(btnRegis, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtNama, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(jLabel2)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(141, 141, 141)
+                .addGap(41, 41, 41)
                 .addComponent(jLabel2)
-                .addGap(48, 48, 48)
+                .addGap(55, 55, 55)
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -171,7 +220,7 @@ public class RegisterAdminForm extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(cbShowPass)
                 .addGap(18, 18, 18)
                 .addComponent(btnRegis)
@@ -202,27 +251,19 @@ public class RegisterAdminForm extends javax.swing.JFrame {
 
     private void btnRegisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisActionPerformed
         // TODO add your handling code here:
-        String user = txtUsername.getText();
-        String pass = txtPassword.getText();
-        
-        conLog.registerAdmin(user, pass);
-        System.out.println("Registrasi berhasil");
-        
-        JOptionPane.showMessageDialog(null, "Registrasi berhasil", "Pesan", JOptionPane.INFORMATION_MESSAGE);
-        new LoginAdminForm().setVisible(true);
-        this.dispose();
+        RegistAction();
     }//GEN-LAST:event_btnRegisActionPerformed
+
+    private void cbShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbShowPassActionPerformed
+        // TODO add your handling code here:
+        showPassword();
+    }//GEN-LAST:event_cbShowPassActionPerformed
 
     private void txt_LoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_LoginMouseClicked
         // TODO add your handling code here:
         new LoginAdminForm().setVisible(true);
         dispose();
     }//GEN-LAST:event_txt_LoginMouseClicked
-
-    private void cbShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbShowPassActionPerformed
-        // TODO add your handling code here:
-        showPassword();
-    }//GEN-LAST:event_cbShowPassActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,20 +282,23 @@ public class RegisterAdminForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegisterAdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistAdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegisterAdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistAdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegisterAdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistAdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegisterAdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistAdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegisterAdminForm().setVisible(true);
+                new RegistAdminForm().setVisible(true);
             }
         });
     }
@@ -267,8 +311,10 @@ public class RegisterAdminForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField txtNama;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsername;
     private javax.swing.JLabel txt_Login;

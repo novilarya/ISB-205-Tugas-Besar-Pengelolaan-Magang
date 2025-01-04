@@ -20,25 +20,27 @@ public class ControllerLogin {
     Statement stmt;
     ResultSet rs;
 
-    public int LoginAdmin(String user, String pwd){
-        int stat = 0;
-        conMan = new ConnectionManager();
-        conn = conMan.connectDb();
-        try {
-            Statement stm =  conn.createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM admin where username = '" + user + "' and password = '" + pwd + "'");
-            while(rs.next()){
-            if (user.equals(rs.getString("username")) && pwd.equals(rs.getString("password"))){
-                stat = 1;
-            }else{
-                stat = 0;
-                }
-            }
-            return stat;
-        }catch(SQLException ex){
-            return stat;
+    
+    public String Login(String user, String pwd) {
+    String nama = null; 
+    conMan = new ConnectionManager();
+    conn = conMan.connectDb();
+    try {
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT * FROM admin WHERE username = '" + user + "' AND password = '" + pwd + "'");
+        if (rs.next()) { 
+            nama = rs.getString("nama"); 
         }
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    } finally {
+        conMan.disconnectDb(conn);// Pastikan koneksi ditutup
     }
+    return nama; // Jika login gagal, akan mengembalikan null
+}
+    
+    
+    
 
     public int LoginPenyelenggara(String user, String pwd){
         int stat = 0;
@@ -66,9 +68,9 @@ public class ControllerLogin {
         }
     }
 
-    public int registerAdmin(String user, String pwd){
+    public int register(String nama, String user, String pwd){
         int stat = 0;
-        String query = "INSERT INTO admin (username, password) VALUES ('"+user+"', '"+pwd+"');";
+        String query = "INSERT INTO admin (nama, username, password) VALUES ('"+nama+"', '"+user+"', '"+pwd+"');";
         conMan = new ConnectionManager();
         conn = conMan.connectDb();
         try {
@@ -76,10 +78,11 @@ public class ControllerLogin {
             stmt.executeUpdate(query);
             conMan.disconnectDb(conn);
         } catch (SQLException ex) {
-        System.out.println("error: " + ex.getMessage());
-        }
+            System.out.println("error: " + ex.getMessage());
+    }
         return stat;
     }
+
 
     public int registerPenyelenggara(String nama, String instansi, String user, String pwd){
         int stat = 0;
