@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package org.itenas.oop.project.view;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,50 +11,51 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import org.itenas.oop.project.connection.ConnectionManager;
-
 /**
  *
  * @author Hilman Nurfauzan
  */
-
-public class MelihatDaftarAdmin extends javax.swing.JFrame {
+public class MelihatDaftarPenyelenggara extends javax.swing.JFrame {
 
     /**
-     * Creates new form MelihatDaftarAdmin
+     * Creates new form MelihatDaftarPenyelenggara
      */
-    public MelihatDaftarAdmin() {
+    public MelihatDaftarPenyelenggara() {
         initComponents();
         setLocationRelativeTo(null);
-        loadTableDataAdmin();
+        loadTableDataPenyelenggara();
     }
     
-    private void loadTableDataAdmin() {
+    private void loadTableDataPenyelenggara() {
     ConnectionManager conMan = new ConnectionManager();
     Connection conn = conMan.logOn();
     DefaultTableModel model = new DefaultTableModel();
+    model.addColumn("ID Penyelenggara");
     model.addColumn("Nama");
+    model.addColumn("Instansi");
     model.addColumn("Username");
-    tableAdmin.setModel(model);
+    tablePenyelenggara.setModel(model);
 
     try {
         Statement stmt = conn.createStatement();
-        String query = "SELECT nama, username FROM admin";
+        String query = "SELECT id_penyelenggara, nama, instansi, username FROM penyelenggara";
         ResultSet rs = stmt.executeQuery(query);
 
         while (rs.next()) {
             model.addRow(new Object[]{
-                rs.getString("nama"), // Ambil kolom Nama
-                rs.getString("username"), // Ambil kolom Username
+                rs.getInt("id_penyelenggara"),
+                rs.getString("nama"), 
+                rs.getString("instansi"),
+                rs.getString("username"),
             });
         }
 
-        tableAdmin.setModel(model); // Set model ke tabel
+        tablePenyelenggara.setModel(model); // Set model ke tabel
         conMan.logOff();
     } catch (SQLException ex) {
         System.out.println("Error: " + ex.getMessage());
     }
 }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -68,21 +68,22 @@ public class MelihatDaftarAdmin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableAdmin = new javax.swing.JTable();
+        tablePenyelenggara = new javax.swing.JTable();
         btnHapus = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        txtKembali = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(226, 241, 231));
 
         jPanel2.setBackground(new java.awt.Color(56, 116, 120));
+        jPanel2.setPreferredSize(new java.awt.Dimension(571, 146));
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 36)); // NOI18N
-        jLabel1.setText("DAFTAR ADMIN");
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 36)); // NOI18N
+        jLabel2.setText("DAFTAR PENYELENGGARA");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -90,19 +91,22 @@ public class MelihatDaftarAdmin extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(299, 299, 299))
+                .addComponent(jLabel2)
+                .addGap(229, 229, 229))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(jLabel1)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addComponent(jLabel2)
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
-        tableAdmin.setBackground(new java.awt.Color(46, 80, 119));
-        tableAdmin.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Profile");
+
+        tablePenyelenggara.setBackground(new java.awt.Color(46, 80, 119));
+        tablePenyelenggara.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -113,12 +117,12 @@ public class MelihatDaftarAdmin extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tableAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablePenyelenggara.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableAdminMouseClicked(evt);
+                tablePenyelenggaraMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tableAdmin);
+        jScrollPane1.setViewportView(tablePenyelenggara);
 
         btnHapus.setBackground(new java.awt.Color(184, 0, 31));
         btnHapus.setText("Hapus");
@@ -128,15 +132,11 @@ public class MelihatDaftarAdmin extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Profile");
-
-        txtKembali.setForeground(new java.awt.Color(0, 0, 0));
-        txtKembali.setIcon(new javax.swing.ImageIcon("C:\\Users\\hilma\\Downloads\\direction_control_undo_back_backward_left_previous_icon_219294.png")); // NOI18N
-        txtKembali.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Kembali");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtKembaliMouseClicked(evt);
+                jLabel3MouseClicked(evt);
             }
         });
 
@@ -144,39 +144,36 @@ public class MelihatDaftarAdmin extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 960, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(227, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 193, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(157, 157, 157))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(21, 21, 21))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(397, 397, 397))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtKembali)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(jLabel1)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(179, 179, 179))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(423, 423, 423))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel2)
-                .addGap(35, 35, 35)
+                .addGap(34, 34, 34)
+                .addComponent(jLabel1)
+                .addGap(49, 49, 49)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(68, 68, 68)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(123, 123, 123)
-                .addComponent(txtKembali))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addComponent(jLabel3))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -193,19 +190,24 @@ public class MelihatDaftarAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tablePenyelenggaraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePenyelenggaraMouseClicked
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_tablePenyelenggaraMouseClicked
+
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
         // TODO add your handling code here:
-        int pilihBaris = tableAdmin.getSelectedRow();
+        int pilihBaris = tablePenyelenggara.getSelectedRow();
     if (pilihBaris == -1) {
         JOptionPane.showMessageDialog(btnHapus, "Harap pilih data untuk dihapus!","Warning",JOptionPane.ERROR_MESSAGE);
         return;
     }
 
     // Ambil username dari baris yang dipilih
-    String username = tableAdmin.getValueAt(pilihBaris, 1).toString();
+    String nama = tablePenyelenggara.getValueAt(pilihBaris, 1).toString();
 
     // Konfirmasi penghapusan
-    int konfirmasi = javax.swing.JOptionPane.showConfirmDialog(this,"Apakah Anda yakin ingin menghapus admin dengan username: " + username + "?", 
+    int konfirmasi = javax.swing.JOptionPane.showConfirmDialog(this,"Apakah Anda yakin ingin menghapus penyelenggara dengan nama: " + nama + "?", 
         "Konfirmasi Hapus", javax.swing.JOptionPane.YES_NO_OPTION);
     
     if (konfirmasi == javax.swing.JOptionPane.YES_OPTION) {
@@ -214,7 +216,7 @@ public class MelihatDaftarAdmin extends javax.swing.JFrame {
         Connection conn = conMan.logOn();
         try {
             Statement stmt = conn.createStatement();
-            String query = "DELETE FROM admin WHERE username = '" + username + "'";
+            String query = "DELETE FROM penyelenggara WHERE nama = '" + nama + "'";
             int barisHapus = stmt.executeUpdate(query);
 
             if (barisHapus > 0) {
@@ -230,20 +232,15 @@ public class MelihatDaftarAdmin extends javax.swing.JFrame {
         }
 
         // Refresh tabel setelah penghapusan
-        loadTableDataAdmin();
+        loadTableDataPenyelenggara();
     }
     }//GEN-LAST:event_btnHapusActionPerformed
 
-    private void tableAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableAdminMouseClicked
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_tableAdminMouseClicked
-
-    private void txtKembaliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtKembaliMouseClicked
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         // TODO add your handling code here:
         new MainAdminForm().setVisible(true);
         dispose();
-    }//GEN-LAST:event_txtKembaliMouseClicked
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -262,20 +259,20 @@ public class MelihatDaftarAdmin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MelihatDaftarAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MelihatDaftarPenyelenggara.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MelihatDaftarAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MelihatDaftarPenyelenggara.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MelihatDaftarAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MelihatDaftarPenyelenggara.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MelihatDaftarAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MelihatDaftarPenyelenggara.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MelihatDaftarAdmin().setVisible(true);
+                new MelihatDaftarPenyelenggara().setVisible(true);
             }
         });
     }
@@ -284,10 +281,10 @@ public class MelihatDaftarAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnHapus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableAdmin;
-    private javax.swing.JLabel txtKembali;
+    private javax.swing.JTable tablePenyelenggara;
     // End of variables declaration//GEN-END:variables
 }

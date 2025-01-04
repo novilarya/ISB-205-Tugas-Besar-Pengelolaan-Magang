@@ -15,6 +15,7 @@ public class MainAdminForm extends javax.swing.JFrame {
      */
     public MainAdminForm() {
         initComponents();
+        
     }
 
     /**
@@ -27,70 +28,20 @@ public class MainAdminForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        txtHelloAdmin = new javax.swing.JLabel();
-        btnMelihatDaftarMagang = new javax.swing.JButton();
-        btnTambahAdmin = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        btnTambahAdmin = new javax.swing.JButton();
+        btnDaftarAdmin = new javax.swing.JButton();
+        btnDaftarMagang = new javax.swing.JButton();
+        btnLogOut = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        btnDaftarMagang1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(201, 104, 104));
-
-        jPanel2.setBackground(new java.awt.Color(255, 244, 234));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
-        jPanel2.setPreferredSize(new java.awt.Dimension(840, 656));
-
-        txtHelloAdmin.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtHelloAdmin.setText("Hello Admin");
-
-        btnMelihatDaftarMagang.setBackground(new java.awt.Color(126, 172, 181));
-        btnMelihatDaftarMagang.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnMelihatDaftarMagang.setForeground(new java.awt.Color(0, 0, 0));
-        btnMelihatDaftarMagang.setText("Melihat Daftar calon magang");
-        btnMelihatDaftarMagang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMelihatDaftarMagangActionPerformed(evt);
-            }
-        });
-
-        btnTambahAdmin.setBackground(new java.awt.Color(126, 172, 181));
-        btnTambahAdmin.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnTambahAdmin.setForeground(new java.awt.Color(0, 0, 0));
-        btnTambahAdmin.setText("Tambah Admin");
-        btnTambahAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTambahAdminActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtHelloAdmin)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(btnTambahAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
-                .addComponent(btnMelihatDaftarMagang, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtHelloAdmin)
-                .addGap(212, 212, 212)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnMelihatDaftarMagang, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTambahAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(303, Short.MAX_VALUE))
-        );
+        jPanel1.setBackground(new java.awt.Color(207, 232, 169));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -99,36 +50,144 @@ public class MainAdminForm extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Profile");
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\hilma\\Downloads\\Images\\profile.png")); // NOI18N
+
+        jPanel3.setBackground(new java.awt.Color(255, 253, 227));
+
+        btnTambahAdmin.setBackground(new java.awt.Color(207, 232, 169));
+        btnTambahAdmin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnTambahAdmin.setForeground(new java.awt.Color(0, 0, 0));
+        btnTambahAdmin.setText("Tambah Admin");
+        btnTambahAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTambahAdminActionPerformed(evt);
+            }
+        });
+
+        btnDaftarAdmin.setBackground(new java.awt.Color(207, 232, 169));
+        btnDaftarAdmin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnDaftarAdmin.setForeground(new java.awt.Color(0, 0, 0));
+        btnDaftarAdmin.setText("Daftar Admin");
+        btnDaftarAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDaftarAdminActionPerformed(evt);
+            }
+        });
+
+        btnDaftarMagang.setBackground(new java.awt.Color(207, 232, 169));
+        btnDaftarMagang.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnDaftarMagang.setForeground(new java.awt.Color(0, 0, 0));
+        btnDaftarMagang.setText("Daftar Magang");
+        btnDaftarMagang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDaftarMagangActionPerformed(evt);
+            }
+        });
+
+        btnLogOut.setBackground(new java.awt.Color(207, 232, 169));
+        btnLogOut.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnLogOut.setForeground(new java.awt.Color(0, 0, 0));
+        btnLogOut.setText("Logout");
+        btnLogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogOutActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("ADMIN");
+
+        btnDaftarMagang1.setBackground(new java.awt.Color(207, 232, 169));
+        btnDaftarMagang1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnDaftarMagang1.setForeground(new java.awt.Color(0, 0, 0));
+        btnDaftarMagang1.setText("Daftar Penyelenggara");
+        btnDaftarMagang1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDaftarMagang1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnDaftarAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnTambahAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDaftarMagang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDaftarMagang1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addGap(48, 48, 48)
+                .addComponent(btnTambahAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnDaftarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnDaftarMagang, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnDaftarMagang1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\hilma\\Downloads\\Images\\mobile-password-forgot256.png")); // NOI18N
+        jLabel4.setText("jLabel4");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 960, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(284, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(149, 149, 149)
+                .addComponent(jLabel4)
+                .addContainerGap(284, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,14 +200,32 @@ public class MainAdminForm extends javax.swing.JFrame {
     private void btnTambahAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahAdminActionPerformed
         // TODO add your handling code here:
         new TambahAdminForm().setVisible(true);
-        dispose(); 
+        dispose();
     }//GEN-LAST:event_btnTambahAdminActionPerformed
 
-    private void btnMelihatDaftarMagangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMelihatDaftarMagangActionPerformed
+    private void btnDaftarMagangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaftarMagangActionPerformed
         // TODO add your handling code here:
         new MelihatDaftarMagangAdminDanPenyelenggara().setVisible(true);
         dispose();
-    }//GEN-LAST:event_btnMelihatDaftarMagangActionPerformed
+    }//GEN-LAST:event_btnDaftarMagangActionPerformed
+
+    private void btnDaftarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaftarAdminActionPerformed
+        // TODO add your handling code here:
+        new MelihatDaftarAdmin().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnDaftarAdminActionPerformed
+
+    private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
+        // TODO add your handling code here:
+        new LoginAdminForm().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnLogOutActionPerformed
+
+    private void btnDaftarMagang1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaftarMagang1ActionPerformed
+        // TODO add your handling code here:
+        new MelihatDaftarPenyelenggara().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnDaftarMagang1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,12 +263,16 @@ public class MainAdminForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnMelihatDaftarMagang;
+    private javax.swing.JButton btnDaftarAdmin;
+    private javax.swing.JButton btnDaftarMagang;
+    private javax.swing.JButton btnDaftarMagang1;
+    private javax.swing.JButton btnLogOut;
     private javax.swing.JButton btnTambahAdmin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel txtHelloAdmin;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }
