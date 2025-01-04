@@ -1,14 +1,10 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package org.itenas.oop.project.view;
+package org.itenas.oop.project.component;
 
-import com.mysql.cj.protocol.Resultset;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -21,16 +17,15 @@ import org.itenas.oop.project.repository.ControllerMagang;
  *
  * @author aryan
  */
-public class MengelolaMagangForm extends javax.swing.JFrame {
+public class KelolaMagangForm extends javax.swing.JPanel {
     Boolean hasil;
     ControllerMagang conMagang = new ControllerMagang();
     private DefaultTableModel model;
     private ConnectionManager conMan;
     private Connection conn;
-
-    public MengelolaMagangForm() {
+    
+    public KelolaMagangForm() {
         initComponents();
-        
         model = new DefaultTableModel();
         tabelMagang.setModel(model);
         
@@ -41,7 +36,7 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
         model.addColumn("Posisi");
         model.addColumn("Deskripsi");
         model.addColumn("Kualifikasi");
-        getData();
+        getData();        
     }
     
 
@@ -98,7 +93,7 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null,"Barang dengan judul " + judulMagang + " tidak ditemukan!");
         }
-    }    
+    }  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -108,57 +103,29 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        textPenyelenggaraMagang = new javax.swing.JLabel();
         textUsername = new javax.swing.JLabel();
         txtJudulPenyelenggara = new javax.swing.JTextField();
-        txtLokasiPenyelenggara = new javax.swing.JTextField();
         textUsername1 = new javax.swing.JLabel();
+        txtLokasiPenyelenggara = new javax.swing.JTextField();
         textUsername2 = new javax.swing.JLabel();
-        txtPosisiPenyelenggara = new javax.swing.JTextField();
-        textUsername3 = new javax.swing.JLabel();
-        textUsername4 = new javax.swing.JLabel();
-        txtDeskripsiPenyelenggara = new javax.swing.JTextField();
-        txtKualifikasiPenyelenggara = new javax.swing.JTextField();
-        textUsername5 = new javax.swing.JLabel();
-        txtSearchJudulMagang = new javax.swing.JTextField();
-        textUsername6 = new javax.swing.JLabel();
         txtTipeMagang = new javax.swing.JComboBox<>();
+        textUsername3 = new javax.swing.JLabel();
+        txtPosisiPenyelenggara = new javax.swing.JTextField();
+        txtDeskripsiPenyelenggara = new javax.swing.JTextField();
+        textUsername4 = new javax.swing.JLabel();
+        textUsername5 = new javax.swing.JLabel();
+        txtKualifikasiPenyelenggara = new javax.swing.JTextField();
+        btnDelete = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
+        btnSubmit = new javax.swing.JButton();
+        textUsername6 = new javax.swing.JLabel();
+        txtSearchJudulMagang = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelMagang = new javax.swing.JTable();
-        btnSubmit = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBackground(new java.awt.Color(246, 244, 240));
-
-        jPanel5.setBackground(new java.awt.Color(121, 215, 190));
-
-        textPenyelenggaraMagang.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        textPenyelenggaraMagang.setForeground(new java.awt.Color(51, 51, 51));
-        textPenyelenggaraMagang.setText("Kelola Magang");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(textPenyelenggaraMagang)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(textPenyelenggaraMagang)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
+        setBackground(new java.awt.Color(239, 236, 229));
 
         textUsername.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         textUsername.setForeground(new java.awt.Color(51, 51, 51));
@@ -173,6 +140,10 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
             }
         });
 
+        textUsername1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        textUsername1.setForeground(new java.awt.Color(51, 51, 51));
+        textUsername1.setText("Lokasi");
+
         txtLokasiPenyelenggara.setBackground(new java.awt.Color(239, 239, 239));
         txtLokasiPenyelenggara.setForeground(new java.awt.Color(51, 51, 51));
         txtLokasiPenyelenggara.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(191, 191, 191), 1, true));
@@ -182,13 +153,23 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
             }
         });
 
-        textUsername1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        textUsername1.setForeground(new java.awt.Color(51, 51, 51));
-        textUsername1.setText("Lokasi");
-
         textUsername2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         textUsername2.setForeground(new java.awt.Color(51, 51, 51));
         textUsername2.setText("Tipe");
+
+        txtTipeMagang.setBackground(new java.awt.Color(239, 239, 239));
+        txtTipeMagang.setForeground(new java.awt.Color(51, 51, 51));
+        txtTipeMagang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full Time", "Part Time" }));
+        txtTipeMagang.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(191, 191, 191), 1, true));
+        txtTipeMagang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTipeMagangActionPerformed(evt);
+            }
+        });
+
+        textUsername3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        textUsername3.setForeground(new java.awt.Color(51, 51, 51));
+        textUsername3.setText("Posisi");
 
         txtPosisiPenyelenggara.setBackground(new java.awt.Color(239, 239, 239));
         txtPosisiPenyelenggara.setForeground(new java.awt.Color(51, 51, 51));
@@ -199,14 +180,6 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
             }
         });
 
-        textUsername3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        textUsername3.setForeground(new java.awt.Color(51, 51, 51));
-        textUsername3.setText("Posisi");
-
-        textUsername4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        textUsername4.setForeground(new java.awt.Color(51, 51, 51));
-        textUsername4.setText("Deskripsi");
-
         txtDeskripsiPenyelenggara.setBackground(new java.awt.Color(239, 239, 239));
         txtDeskripsiPenyelenggara.setForeground(new java.awt.Color(51, 51, 51));
         txtDeskripsiPenyelenggara.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(191, 191, 191), 1, true));
@@ -215,6 +188,14 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
                 txtDeskripsiPenyelenggaraActionPerformed(evt);
             }
         });
+
+        textUsername4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        textUsername4.setForeground(new java.awt.Color(51, 51, 51));
+        textUsername4.setText("Deskripsi");
+
+        textUsername5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        textUsername5.setForeground(new java.awt.Color(51, 51, 51));
+        textUsername5.setText("Kualifikasi");
 
         txtKualifikasiPenyelenggara.setBackground(new java.awt.Color(239, 239, 239));
         txtKualifikasiPenyelenggara.setForeground(new java.awt.Color(51, 51, 51));
@@ -225,30 +206,14 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
             }
         });
 
-        textUsername5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        textUsername5.setForeground(new java.awt.Color(51, 51, 51));
-        textUsername5.setText("Kualifikasi");
-
-        txtSearchJudulMagang.setBackground(new java.awt.Color(239, 239, 239));
-        txtSearchJudulMagang.setForeground(new java.awt.Color(51, 51, 51));
-        txtSearchJudulMagang.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(191, 191, 191), 1, true));
-        txtSearchJudulMagang.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setBackground(new java.awt.Color(255, 153, 153));
+        btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(51, 51, 51));
+        btnDelete.setText("Delete");
+        btnDelete.setBorder(null);
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchJudulMagangActionPerformed(evt);
-            }
-        });
-
-        textUsername6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        textUsername6.setForeground(new java.awt.Color(51, 51, 51));
-        textUsername6.setText("Pencarian magang berdasarkan judul");
-
-        txtTipeMagang.setBackground(new java.awt.Color(239, 239, 239));
-        txtTipeMagang.setForeground(new java.awt.Color(51, 51, 51));
-        txtTipeMagang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full Time", "Part Time" }));
-        txtTipeMagang.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(191, 191, 191), 1, true));
-        txtTipeMagang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTipeMagangActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
@@ -274,14 +239,27 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
             }
         });
 
-        btnDelete.setBackground(new java.awt.Color(255, 153, 153));
-        btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnDelete.setForeground(new java.awt.Color(51, 51, 51));
-        btnDelete.setText("Delete");
-        btnDelete.setBorder(null);
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+        btnSubmit.setBackground(new java.awt.Color(153, 153, 255));
+        btnSubmit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSubmit.setForeground(new java.awt.Color(51, 51, 51));
+        btnSubmit.setText("Submit");
+        btnSubmit.setBorder(null);
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
+                btnSubmitActionPerformed(evt);
+            }
+        });
+
+        textUsername6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        textUsername6.setForeground(new java.awt.Color(51, 51, 51));
+        textUsername6.setText("Pencarian magang berdasarkan judul");
+
+        txtSearchJudulMagang.setBackground(new java.awt.Color(239, 239, 239));
+        txtSearchJudulMagang.setForeground(new java.awt.Color(51, 51, 51));
+        txtSearchJudulMagang.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(191, 191, 191), 1, true));
+        txtSearchJudulMagang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchJudulMagangActionPerformed(evt);
             }
         });
 
@@ -315,71 +293,55 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabelMagang);
 
-        btnSubmit.setBackground(new java.awt.Color(153, 153, 255));
-        btnSubmit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnSubmit.setForeground(new java.awt.Color(51, 51, 51));
-        btnSubmit.setText("Submit");
-        btnSubmit.setBorder(null);
-        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSubmitActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textUsername1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtLokasiPenyelenggara, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtJudulPenyelenggara, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(textUsername3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPosisiPenyelenggara, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
+                            .addComponent(txtPosisiPenyelenggara)
                             .addComponent(textUsername2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTipeMagang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(109, 109, 109))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(txtTipeMagang, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtDeskripsiPenyelenggara, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtKualifikasiPenyelenggara)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textUsername4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textUsername5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtSearchJudulMagang, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(textUsername6)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 293, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(textUsername5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtKualifikasiPenyelenggara, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(textUsername4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtDeskripsiPenyelenggara, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(35, Short.MAX_VALUE))))
+                            .addComponent(textUsername6))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(textUsername)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtJudulPenyelenggara, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -387,7 +349,7 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
                         .addComponent(textUsername1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtLokasiPenyelenggara, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(textUsername2)
                         .addGap(3, 3, 3)
                         .addComponent(txtTipeMagang, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -401,40 +363,25 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
                 .addComponent(txtDeskripsiPenyelenggara, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textUsername5)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtKualifikasiPenyelenggara, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtKualifikasiPenyelenggara, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
                 .addComponent(textUsername6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtSearchJudulMagang, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtJudulPenyelenggaraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtJudulPenyelenggaraActionPerformed
@@ -444,6 +391,10 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
     private void txtLokasiPenyelenggaraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLokasiPenyelenggaraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLokasiPenyelenggaraActionPerformed
+
+    private void txtTipeMagangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipeMagangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTipeMagangActionPerformed
 
     private void txtPosisiPenyelenggaraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPosisiPenyelenggaraActionPerformed
         // TODO add your handling code here:
@@ -457,19 +408,14 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtKualifikasiPenyelenggaraActionPerformed
 
-    private void txtSearchJudulMagangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchJudulMagangActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchJudulMagangActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        int i = tabelMagang.getSelectedRow();
 
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        try {
-            String judulMagang = txtSearchJudulMagang.getText();
-            tampilkanDataMagang(judulMagang);
-            
-        }catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(null, "Anda Salah Memasukkan Judul!");
-        }
-    }//GEN-LAST:event_btnSearchActionPerformed
+        String judulMagang = tabelMagang.getModel().getValueAt(i, 0).toString();
+        conMagang.deleteMagang(judulMagang);
+        getData();
+        clearData();
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         clearData();
@@ -491,7 +437,7 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
         String posisiMagang = tabelMagang.getModel().getValueAt(i, 4).toString();
         String deskripsiMagang = tabelMagang.getModel().getValueAt(i, 5).toString();
         String kualifikasiMagang = tabelMagang.getModel().getValueAt(i, 6).toString();
-        
+
         String newJudul = txtJudulPenyelenggara.getText();
         String newLokasi = txtLokasiPenyelenggara.getText();
         String newTipe = (String)txtTipeMagang.getSelectedItem();
@@ -504,15 +450,6 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
         clearData();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        int i = tabelMagang.getSelectedRow();
-
-        String judulMagang = tabelMagang.getModel().getValueAt(i, 0).toString();
-        conMagang.deleteMagang(judulMagang);
-        getData();
-        clearData();
-    }//GEN-LAST:event_btnDeleteActionPerformed
-
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         hasil = conMagang.insertMagang(txtJudulPenyelenggara.getText(), txtLokasiPenyelenggara.getText(), (String)txtTipeMagang.getSelectedItem(), txtPosisiPenyelenggara.getText(), txtDeskripsiPenyelenggara.getText(), txtKualifikasiPenyelenggara.getText());
         if (hasil){
@@ -524,15 +461,25 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
-    private void txtTipeMagangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipeMagangActionPerformed
+    private void txtSearchJudulMagangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchJudulMagangActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTipeMagangActionPerformed
+    }//GEN-LAST:event_txtSearchJudulMagangActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        try {
+            String judulMagang = txtSearchJudulMagang.getText();
+            tampilkanDataMagang(judulMagang);
+
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, "Anda Salah Memasukkan Judul!");
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     private void tabelMagangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMagangMouseClicked
         int i = tabelMagang.getSelectedRow();
-        
+
         TableModel model = tabelMagang.getModel();
-        
+
         txtJudulPenyelenggara.setText(model.getValueAt(i, 0).toString());
         txtLokasiPenyelenggara.setText(model.getValueAt(i, 2).toString());
         txtTipeMagang.setSelectedItem(model.getValueAt(i, 3).toString());
@@ -541,40 +488,6 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
         txtKualifikasiPenyelenggara.setText(model.getValueAt(i, 6).toString());
     }//GEN-LAST:event_tabelMagangMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MengelolaMagangForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MengelolaMagangForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MengelolaMagangForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MengelolaMagangForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MengelolaMagangForm().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
@@ -582,11 +495,8 @@ public class MengelolaMagangForm extends javax.swing.JFrame {
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelMagang;
-    private javax.swing.JLabel textPenyelenggaraMagang;
     private javax.swing.JLabel textUsername;
     private javax.swing.JLabel textUsername1;
     private javax.swing.JLabel textUsername2;

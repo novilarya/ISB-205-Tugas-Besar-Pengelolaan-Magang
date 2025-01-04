@@ -217,7 +217,7 @@ public class LoginAdminForm extends javax.swing.JFrame {
 
     private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
         // TODO add your handling code here:
-        int stat = conLog.Login(txtUsername.getText(), String.valueOf(txtPassword.getPassword()));
+        int stat = conLog.LoginAdmin(txtUsername.getText(), String.valueOf(txtPassword.getPassword()));
         
         if (stat == 1) {
             JOptionPane.showMessageDialog(null, "Login berhasil", "Pesan", JOptionPane.INFORMATION_MESSAGE);

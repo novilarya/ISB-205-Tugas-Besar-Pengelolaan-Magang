@@ -23,7 +23,7 @@ public class ControllerLogin {
     public int LoginAdmin(String user, String pwd){
         int stat = 0;
         conMan = new ConnectionManager();
-        conn = conMan.logOn();
+        conn = conMan.connectDb();
         try {
             Statement stm =  conn.createStatement();
             ResultSet rs = stm.executeQuery("SELECT * FROM admin where username = '" + user + "' and password = '" + pwd + "'");
@@ -35,7 +35,10 @@ public class ControllerLogin {
                 }
             }
             return stat;
-        } catch (SQLException ex){
+        }catch(SQLException ex){
+            return stat;
+        }
+    }
 
     public int LoginPenyelenggara(String user, String pwd){
         int stat = 0;
@@ -67,13 +70,15 @@ public class ControllerLogin {
         int stat = 0;
         String query = "INSERT INTO admin (username, password) VALUES ('"+user+"', '"+pwd+"');";
         conMan = new ConnectionManager();
-        conn = conMan.logOn();
+        conn = conMan.connectDb();
         try {
             stmt = conn.createStatement();
             stmt.executeUpdate(query);
-            conMan.logOff();
+            conMan.disconnectDb(conn);
         } catch (SQLException ex) {
-            System.out.println("error: " + ex.getMessage());
+        System.out.println("error: " + ex.getMessage());
+        }
+        return stat;
     }
 
     public int registerPenyelenggara(String nama, String instansi, String user, String pwd){

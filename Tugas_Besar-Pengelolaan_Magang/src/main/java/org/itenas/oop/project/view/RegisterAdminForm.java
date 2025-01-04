@@ -205,7 +205,7 @@ public class RegisterAdminForm extends javax.swing.JFrame {
         String user = txtUsername.getText();
         String pass = txtPassword.getText();
         
-        conLog.register(user, pass);
+        conLog.registerAdmin(user, pass);
         System.out.println("Registrasi berhasil");
         
         JOptionPane.showMessageDialog(null, "Registrasi berhasil", "Pesan", JOptionPane.INFORMATION_MESSAGE);

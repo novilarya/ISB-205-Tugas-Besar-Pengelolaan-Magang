@@ -4,6 +4,12 @@
  */
 package org.itenas.oop.project.view;
 
+import javax.swing.JComponent;
+import org.itenas.oop.project.event.EventMenuSelected;
+import org.itenas.oop.project.component.KelolaMagangForm;
+import org.itenas.oop.project.component.MelihatDaftarMagang;
+import org.itenas.oop.project.component.SeleksiPendaftarForm;
+
 /**
  *
  * @author aryan
@@ -11,10 +17,32 @@ package org.itenas.oop.project.view;
 public class MainPenyelenggaraForm extends javax.swing.JFrame {
 
     /**
-     * Creates new form MainPenyelenggaraForm
+     * Creates new form MainPenyelenggara
      */
     public MainPenyelenggaraForm() {
         initComponents();
+        menu.initMoving(MainPenyelenggaraForm.this);
+        menu.addEventMenuSelected(new EventMenuSelected(){
+            @Override
+            public void selected (int index){
+                if (index == 0){
+                    setForm(new KelolaMagangForm());
+                }else if(index == 1){
+                    setForm(new MelihatDaftarMagang());
+                }else if(index == 2){
+                    setForm(new SeleksiPendaftarForm());
+                }else if(index == 3){
+                    System.out.println("Logout");
+                }
+            }   
+        });
+    }
+    
+    private void setForm(JComponent com){
+        MainPanel.removeAll();
+        MainPanel.add(com);
+        MainPanel.repaint();
+        MainPanel.revalidate();
     }
 
     /**
@@ -26,208 +54,70 @@ public class MainPenyelenggaraForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        textSelamatDatang = new javax.swing.JLabel();
-        textPenyelenggaraMagang = new javax.swing.JLabel();
-        panelKelolaMagang = new javax.swing.JPanel();
-        textPenyelenggaraMagang2 = new javax.swing.JLabel();
-        textPenyelenggaraMagang1 = new javax.swing.JLabel();
-        panelLihatDaftarMagang = new javax.swing.JPanel();
-        textPenyelenggaraMagang3 = new javax.swing.JLabel();
-        textPenyelenggaraMagang4 = new javax.swing.JLabel();
-        panelSeleksiPendaftarMagang = new javax.swing.JPanel();
-        textPenyelenggaraMagang5 = new javax.swing.JLabel();
-        textPenyelenggaraMagang6 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        panelBorder1 = new org.itenas.oop.project.panel.PanelBorder();
+        menu = new org.itenas.oop.project.component.Menu();
+        header1 = new org.itenas.oop.project.component.Header();
+        MainPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(246, 244, 240));
-        jPanel1.setForeground(new java.awt.Color(246, 244, 240));
+        panelBorder1.setBackground(new java.awt.Color(231, 227, 217));
 
-        textSelamatDatang.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        textSelamatDatang.setForeground(new java.awt.Color(51, 51, 51));
-        textSelamatDatang.setText("Selamat Datang");
-
-        textPenyelenggaraMagang.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        textPenyelenggaraMagang.setForeground(new java.awt.Color(51, 51, 51));
-        textPenyelenggaraMagang.setText("Penyelenggara Magang!");
-
-        panelKelolaMagang.setBackground(new java.awt.Color(46, 80, 119));
-        panelKelolaMagang.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        panelKelolaMagang.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panelKelolaMagangMouseClicked(evt);
-            }
-        });
-
-        textPenyelenggaraMagang2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        textPenyelenggaraMagang2.setForeground(new java.awt.Color(255, 255, 255));
-        textPenyelenggaraMagang2.setText("Kelola");
-
-        textPenyelenggaraMagang1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        textPenyelenggaraMagang1.setForeground(new java.awt.Color(255, 255, 255));
-        textPenyelenggaraMagang1.setText("Magang");
-
-        javax.swing.GroupLayout panelKelolaMagangLayout = new javax.swing.GroupLayout(panelKelolaMagang);
-        panelKelolaMagang.setLayout(panelKelolaMagangLayout);
-        panelKelolaMagangLayout.setHorizontalGroup(
-            panelKelolaMagangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelKelolaMagangLayout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addGroup(panelKelolaMagangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textPenyelenggaraMagang1)
-                    .addGroup(panelKelolaMagangLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(textPenyelenggaraMagang2)))
-                .addContainerGap(86, Short.MAX_VALUE))
+        javax.swing.GroupLayout header1Layout = new javax.swing.GroupLayout(header1);
+        header1.setLayout(header1Layout);
+        header1Layout.setHorizontalGroup(
+            header1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 730, Short.MAX_VALUE)
         );
-        panelKelolaMagangLayout.setVerticalGroup(
-            panelKelolaMagangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelKelolaMagangLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(textPenyelenggaraMagang2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textPenyelenggaraMagang1)
-                .addContainerGap(276, Short.MAX_VALUE))
+        header1Layout.setVerticalGroup(
+            header1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 49, Short.MAX_VALUE)
         );
 
-        panelLihatDaftarMagang.setBackground(new java.awt.Color(46, 80, 119));
-        panelLihatDaftarMagang.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        MainPanel.setBackground(new java.awt.Color(246, 244, 240));
+        MainPanel.setOpaque(false);
+        MainPanel.setLayout(new java.awt.BorderLayout());
 
-        textPenyelenggaraMagang3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        textPenyelenggaraMagang3.setForeground(new java.awt.Color(255, 255, 255));
-        textPenyelenggaraMagang3.setText("Lihat");
-
-        textPenyelenggaraMagang4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        textPenyelenggaraMagang4.setForeground(new java.awt.Color(255, 255, 255));
-        textPenyelenggaraMagang4.setText("Daftar Magang");
-
-        javax.swing.GroupLayout panelLihatDaftarMagangLayout = new javax.swing.GroupLayout(panelLihatDaftarMagang);
-        panelLihatDaftarMagang.setLayout(panelLihatDaftarMagangLayout);
-        panelLihatDaftarMagangLayout.setHorizontalGroup(
-            panelLihatDaftarMagangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLihatDaftarMagangLayout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
-                .addGroup(panelLihatDaftarMagangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLihatDaftarMagangLayout.createSequentialGroup()
-                        .addComponent(textPenyelenggaraMagang4)
-                        .addGap(40, 40, 40))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLihatDaftarMagangLayout.createSequentialGroup()
-                        .addComponent(textPenyelenggaraMagang3)
-                        .addGap(95, 95, 95))))
+        javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
+        panelBorder1.setLayout(panelBorder1Layout);
+        panelBorder1Layout.setHorizontalGroup(
+            panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBorder1Layout.createSequentialGroup()
+                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(header1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelBorder1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(0, 0, 0))
         );
-        panelLihatDaftarMagangLayout.setVerticalGroup(
-            panelLihatDaftarMagangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLihatDaftarMagangLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(textPenyelenggaraMagang3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textPenyelenggaraMagang4)
-                .addContainerGap(276, Short.MAX_VALUE))
-        );
-
-        panelSeleksiPendaftarMagang.setBackground(new java.awt.Color(46, 80, 119));
-        panelSeleksiPendaftarMagang.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-
-        textPenyelenggaraMagang5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        textPenyelenggaraMagang5.setForeground(new java.awt.Color(255, 255, 255));
-        textPenyelenggaraMagang5.setText("Seleksi");
-
-        textPenyelenggaraMagang6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        textPenyelenggaraMagang6.setForeground(new java.awt.Color(255, 255, 255));
-        textPenyelenggaraMagang6.setText("Pendaftar Magang");
-
-        javax.swing.GroupLayout panelSeleksiPendaftarMagangLayout = new javax.swing.GroupLayout(panelSeleksiPendaftarMagang);
-        panelSeleksiPendaftarMagang.setLayout(panelSeleksiPendaftarMagangLayout);
-        panelSeleksiPendaftarMagangLayout.setHorizontalGroup(
-            panelSeleksiPendaftarMagangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelSeleksiPendaftarMagangLayout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
-                .addGroup(panelSeleksiPendaftarMagangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSeleksiPendaftarMagangLayout.createSequentialGroup()
-                        .addComponent(textPenyelenggaraMagang5)
-                        .addGap(95, 95, 95))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSeleksiPendaftarMagangLayout.createSequentialGroup()
-                        .addComponent(textPenyelenggaraMagang6)
-                        .addGap(21, 21, 21))))
-        );
-        panelSeleksiPendaftarMagangLayout.setVerticalGroup(
-            panelSeleksiPendaftarMagangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelSeleksiPendaftarMagangLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(textPenyelenggaraMagang5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textPenyelenggaraMagang6)
-                .addContainerGap(276, Short.MAX_VALUE))
-        );
-
-        jPanel5.setBackground(new java.awt.Color(121, 215, 190));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 84, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textSelamatDatang)
-                    .addComponent(textPenyelenggaraMagang)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(panelKelolaMagang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(panelLihatDaftarMagang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(panelSeleksiPendaftarMagang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 41, Short.MAX_VALUE))
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(textSelamatDatang)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textPenyelenggaraMagang)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelKelolaMagang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelLihatDaftarMagang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelSeleksiPendaftarMagang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45))
+        panelBorder1Layout.setVerticalGroup(
+            panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBorder1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panelBorder1Layout.createSequentialGroup()
+                        .addComponent(header1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void panelKelolaMagangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelKelolaMagangMouseClicked
-        new MainPenyelenggaraForm().setVisible(false);
-        new MengelolaMagangForm().setVisible(true);
-        dispose();  
-    }//GEN-LAST:event_panelKelolaMagangMouseClicked
 
     /**
      * @param args the command line arguments
@@ -255,6 +145,9 @@ public class MainPenyelenggaraForm extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainPenyelenggaraForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -265,18 +158,9 @@ public class MainPenyelenggaraForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel panelKelolaMagang;
-    private javax.swing.JPanel panelLihatDaftarMagang;
-    private javax.swing.JPanel panelSeleksiPendaftarMagang;
-    private javax.swing.JLabel textPenyelenggaraMagang;
-    private javax.swing.JLabel textPenyelenggaraMagang1;
-    private javax.swing.JLabel textPenyelenggaraMagang2;
-    private javax.swing.JLabel textPenyelenggaraMagang3;
-    private javax.swing.JLabel textPenyelenggaraMagang4;
-    private javax.swing.JLabel textPenyelenggaraMagang5;
-    private javax.swing.JLabel textPenyelenggaraMagang6;
-    private javax.swing.JLabel textSelamatDatang;
+    private javax.swing.JPanel MainPanel;
+    private org.itenas.oop.project.component.Header header1;
+    private org.itenas.oop.project.component.Menu menu;
+    private org.itenas.oop.project.panel.PanelBorder panelBorder1;
     // End of variables declaration//GEN-END:variables
 }
