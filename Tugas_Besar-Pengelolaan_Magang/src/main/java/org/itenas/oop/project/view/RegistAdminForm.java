@@ -9,13 +9,13 @@ import org.itenas.oop.project.repository.ControllerLogin;
  *
  * @author aryan
  */
-public class TambahAdminForm extends javax.swing.JFrame {
+public class RegistAdminForm extends javax.swing.JFrame {
     Boolean hasil;
     ControllerLogin conLog = new ControllerLogin();
     /**
      * Creates new form RegisterAdminForm
      */
-    public TambahAdminForm() {
+    public RegistAdminForm() {
         initComponents();
         setLocationRelativeTo(null);
         
@@ -51,7 +51,9 @@ public class TambahAdminForm extends javax.swing.JFrame {
         conLog.register(nama, user, pass);
         System.out.println("Tambah Admin berhasil");
         
-        JOptionPane.showMessageDialog(null, "Tambah Admin berhasil", "Pesan", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Regist berhasil", "Pesan", JOptionPane.INFORMATION_MESSAGE);
+        new LoginAdminForm().setVisible(true);
+        dispose();
     }
     
     public void showPassword(){
@@ -76,7 +78,6 @@ public class TambahAdminForm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtKembali = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
@@ -98,26 +99,13 @@ public class TambahAdminForm extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("SELAMAT DATANG");
 
-        txtKembali.setForeground(new java.awt.Color(19, 16, 16));
-        txtKembali.setText("kembali");
-        txtKembali.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtKembaliMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(txtKembali)))
+                .addGap(104, 104, 104)
+                .addComponent(jLabel1)
                 .addContainerGap(80, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -125,14 +113,12 @@ public class TambahAdminForm extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtKembali)
-                .addContainerGap())
+                .addContainerGap(542, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(19, 16, 16));
-        jLabel2.setText("TAMBAH ADMIN");
+        jLabel2.setText("REGIST");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(19, 16, 16));
@@ -157,7 +143,7 @@ public class TambahAdminForm extends javax.swing.JFrame {
         txtPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(77, 161, 169)));
 
         btnRegis.setBackground(new java.awt.Color(77, 161, 169));
-        btnRegis.setText("Submit");
+        btnRegis.setText("Regist");
         btnRegis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisActionPerformed(evt);
@@ -210,17 +196,19 @@ public class TambahAdminForm extends javax.swing.JFrame {
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(txtNama, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)))))
+                                .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(jLabel2)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(41, 41, 41)
                 .addComponent(jLabel2)
-                .addGap(75, 75, 75)
+                .addGap(55, 55, 55)
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
                 .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -277,12 +265,6 @@ public class TambahAdminForm extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_txt_LoginMouseClicked
 
-    private void txtKembaliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtKembaliMouseClicked
-        // TODO add your handling code here:
-        new MainAdminForm().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_txtKembaliMouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -300,21 +282,23 @@ public class TambahAdminForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TambahAdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistAdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TambahAdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistAdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TambahAdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistAdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TambahAdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistAdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TambahAdminForm().setVisible(true);
+                new RegistAdminForm().setVisible(true);
             }
         });
     }
@@ -330,7 +314,6 @@ public class TambahAdminForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel txtKembali;
     private javax.swing.JTextField txtNama;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsername;

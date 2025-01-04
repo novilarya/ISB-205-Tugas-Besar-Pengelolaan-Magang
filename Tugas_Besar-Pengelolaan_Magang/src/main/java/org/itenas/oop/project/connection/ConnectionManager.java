@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package org.itenas.oop.project.connection;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -13,6 +12,7 @@ import java.sql.SQLException;
  * @author aryan
  */
 public class ConnectionManager {
+
     private final String url = "jdbc:mysql://localhost:3306/isb-205-tugas_akhir-pengelolaan_magang";
     private final String username = "root";
     private final String password = "basdat2024";
