@@ -90,6 +90,7 @@ public class Magang {
     public void setKualifikasiMagang(String kualifikasiMagang) {
         this.kualifikasiMagang = kualifikasiMagang;
     }
+
     
     
 }
