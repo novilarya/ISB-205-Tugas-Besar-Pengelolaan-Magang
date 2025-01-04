@@ -19,12 +19,12 @@ public class ControllerLogin {
     private Connection conn;
     Statement stmt;
     ResultSet rs;
-<<<<<<< HEAD
+
     
     public String Login(String user, String pwd) {
     String nama = null; 
     conMan = new ConnectionManager();
-    conn = conMan.logOn();
+    conn = conMan.connectDb();
     try {
         Statement stm = conn.createStatement();
         ResultSet rs = stm.executeQuery("SELECT * FROM admin WHERE username = '" + user + "' AND password = '" + pwd + "'");
@@ -34,33 +34,13 @@ public class ControllerLogin {
     } catch (SQLException ex) {
         ex.printStackTrace();
     } finally {
-        conMan.logOff(); // Pastikan koneksi ditutup
+        conMan.disconnectDb(conn);// Pastikan koneksi ditutup
     }
     return nama; // Jika login gagal, akan mengembalikan null
 }
     
-    public int register(String nama, String user, String pwd){
-=======
-
-    public int LoginAdmin(String user, String pwd){
-        int stat = 0;
-        conMan = new ConnectionManager();
-        conn = conMan.connectDb();
-        try {
-            Statement stm =  conn.createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM admin where username = '" + user + "' and password = '" + pwd + "'");
-            while(rs.next()){
-            if (user.equals(rs.getString("username")) && pwd.equals(rs.getString("password"))){
-                stat = 1;
-            }else{
-                stat = 0;
-                }
-            }
-            return stat;
-        }catch(SQLException ex){
-            return stat;
-        }
-    }
+    
+    
 
     public int LoginPenyelenggara(String user, String pwd){
         int stat = 0;
@@ -88,8 +68,7 @@ public class ControllerLogin {
         }
     }
 
-    public int registerAdmin(String user, String pwd){
->>>>>>> 406f1b02d39cc0e73595d9806f1ad7e0560443de
+    public int register(String nama, String user, String pwd){
         int stat = 0;
         String query = "INSERT INTO admin (nama, username, password) VALUES ('"+nama+"', '"+user+"', '"+pwd+"');";
         conMan = new ConnectionManager();
@@ -99,10 +78,11 @@ public class ControllerLogin {
             stmt.executeUpdate(query);
             conMan.disconnectDb(conn);
         } catch (SQLException ex) {
-        System.out.println("error: " + ex.getMessage());
-        }
+            System.out.println("error: " + ex.getMessage());
+    }
         return stat;
     }
+
 
     public int registerPenyelenggara(String nama, String instansi, String user, String pwd){
         int stat = 0;

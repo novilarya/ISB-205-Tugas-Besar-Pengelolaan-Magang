@@ -251,19 +251,7 @@ public class RegistAdminForm extends javax.swing.JFrame {
 
     private void btnRegisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD:Tugas_Besar-Pengelolaan_Magang/src/main/java/org/itenas/oop/project/view/RegistAdminForm.java
         RegistAction();
-=======
-        String user = txtUsername.getText();
-        String pass = txtPassword.getText();
-        
-        conLog.registerAdmin(user, pass);
-        System.out.println("Registrasi berhasil");
-        
-        JOptionPane.showMessageDialog(null, "Registrasi berhasil", "Pesan", JOptionPane.INFORMATION_MESSAGE);
-        new LoginAdminForm().setVisible(true);
-        this.dispose();
->>>>>>> 406f1b02d39cc0e73595d9806f1ad7e0560443de:Tugas_Besar-Pengelolaan_Magang/src/main/java/org/itenas/oop/project/view/RegisterAdminForm.java
     }//GEN-LAST:event_btnRegisActionPerformed
 
     private void cbShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbShowPassActionPerformed

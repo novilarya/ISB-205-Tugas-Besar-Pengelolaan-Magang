@@ -12,7 +12,7 @@ import javax.swing.SwingUtilities;
 import org.itenas.oop.project.event.EventMenuSelected;
 import org.itenas.oop.project.panel.MenuItem;
 
-public class ListMenuPenyelenggara<E extends Object> extends JList<E> {
+public class ListMenuAdmin<E extends Object> extends JList<E> {
 
     private final DefaultListModel model;
     private int selectedIndex = -1;
@@ -20,10 +20,9 @@ public class ListMenuPenyelenggara<E extends Object> extends JList<E> {
     
     public void addEventMenuSelected(EventMenuSelected event){
         this.event = event;
-        
     }
     
-    public ListMenuPenyelenggara() {
+    public ListMenuAdmin() {
         model = new DefaultListModel();
         setModel(model);
         addMouseListener(new MouseAdapter() {
@@ -49,8 +48,6 @@ public class ListMenuPenyelenggara<E extends Object> extends JList<E> {
         });
 
     }
-    
-    
 
     @Override
     public ListCellRenderer<? super E> getCellRenderer() {

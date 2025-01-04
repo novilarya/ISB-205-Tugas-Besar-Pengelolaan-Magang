@@ -20,7 +20,7 @@ import org.itenas.oop.project.model.ModelMenu;
  *
  * @author aryan
  */
-public class Menu extends javax.swing.JPanel {
+public class MenuAdmin extends javax.swing.JPanel {
 
     private JFrame fram;
     private EventMenuSelected event;
@@ -30,7 +30,7 @@ public class Menu extends javax.swing.JPanel {
         listMenuPenyelenggara2.addEventMenuSelected(event);
     }
     
-    public Menu() {
+    public MenuAdmin() {
         this.fram = fram;
         initComponents();
         setOpaque(false);
@@ -38,10 +38,13 @@ public class Menu extends javax.swing.JPanel {
         init();
     }
     
+    
+    
     private void init(){
-        listMenuPenyelenggara2.addItem(new ModelMenu("Kelola Magang", ModelMenu.MenuType.MENU));
+        listMenuPenyelenggara2.addItem(new ModelMenu("Tambah Admin", ModelMenu.MenuType.MENU));
+        listMenuPenyelenggara2.addItem(new ModelMenu("Daftar Admin", ModelMenu.MenuType.MENU));
         listMenuPenyelenggara2.addItem(new ModelMenu("Daftar Magang", ModelMenu.MenuType.MENU));
-        listMenuPenyelenggara2.addItem(new ModelMenu("Seleksi Pendaftar", ModelMenu.MenuType.MENU));
+        listMenuPenyelenggara2.addItem(new ModelMenu("Daftar Penyelenggara", ModelMenu.MenuType.MENU));
         listMenuPenyelenggara2.addItem(new ModelMenu("Logout", ModelMenu.MenuType.MENU));
     }
     /**
@@ -61,30 +64,30 @@ public class Menu extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Application");
+        jLabel1.setText("Admin");
 
         javax.swing.GroupLayout panelMovingLayout = new javax.swing.GroupLayout(panelMoving);
         panelMoving.setLayout(panelMovingLayout);
         panelMovingLayout.setHorizontalGroup(
             panelMovingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMovingLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMovingLayout.createSequentialGroup()
+                .addContainerGap(71, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(67, 67, 67))
         );
         panelMovingLayout.setVerticalGroup(
             panelMovingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMovingLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+            .addGroup(panelMovingLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
                 .addComponent(jLabel1)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(listMenuPenyelenggara2, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+            .addComponent(listMenuPenyelenggara2, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()

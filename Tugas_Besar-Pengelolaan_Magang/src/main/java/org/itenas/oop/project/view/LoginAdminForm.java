@@ -21,7 +21,7 @@ public class LoginAdminForm extends javax.swing.JFrame {
         txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
     public void keyPressed(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            LoginAction(); // Panggil metode login
+            LoginAction(); 
         }
     }
 });
@@ -43,7 +43,7 @@ public class LoginAdminForm extends javax.swing.JFrame {
         
         if (nama != null){
             JOptionPane.showMessageDialog(null, "Login berhasil, Selamat datang " + nama, "Pesan", JOptionPane.INFORMATION_MESSAGE);
-            new MainAdminForm().setVisible(true);
+            new MainAdminForm2().setVisible(true);
             dispose();
         }else {
             JOptionPane.showMessageDialog(null,"Username atau password yang Anda masukan salah.", "Pesan", JOptionPane.INFORMATION_MESSAGE);
@@ -207,11 +207,6 @@ public class LoginAdminForm extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGap(0, 680, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 585, Short.MAX_VALUE)
         );
 
         pack();
@@ -223,19 +218,7 @@ public class LoginAdminForm extends javax.swing.JFrame {
 
     private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
         LoginAction();
-=======
-        int stat = conLog.LoginAdmin(txtUsername.getText(), String.valueOf(txtPassword.getPassword()));
-        
-        if (stat == 1) {
-            JOptionPane.showMessageDialog(null, "Login berhasil", "Pesan", JOptionPane.INFORMATION_MESSAGE);
-            new MainAdminForm().setVisible(true);
-            dispose();
-        }else{
-            JOptionPane.showMessageDialog(null, "Username atau password yang anda masukan salah", "Pesan", JOptionPane.INFORMATION_MESSAGE);
-        }
->>>>>>> 406f1b02d39cc0e73595d9806f1ad7e0560443de
     }//GEN-LAST:event_btnLogInActionPerformed
 
     private void cbShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbShowPassActionPerformed
@@ -268,6 +251,7 @@ public class LoginAdminForm extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(LoginAdminForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

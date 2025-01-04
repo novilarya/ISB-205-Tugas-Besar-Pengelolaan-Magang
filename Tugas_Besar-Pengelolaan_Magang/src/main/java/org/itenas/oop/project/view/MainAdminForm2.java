@@ -5,38 +5,50 @@
 package org.itenas.oop.project.view;
 
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 import org.itenas.oop.project.event.EventMenuSelected;
-import org.itenas.oop.project.component.KelolaMagangForm;
+import org.itenas.oop.project.component.TambahAdminForm;
+import org.itenas.oop.project.component.MelihatDaftarAdmin;
 import org.itenas.oop.project.component.MelihatDaftarMagang;
+import org.itenas.oop.project.component.MelihatDaftarPenyelenggara;
 import org.itenas.oop.project.component.SeleksiPendaftarForm;
 
 /**
  *
  * @author aryan
  */
-public class MainPenyelenggaraForm extends javax.swing.JFrame {
+public class MainAdminForm2 extends javax.swing.JFrame {
 
     /**
      * Creates new form MainPenyelenggara
      */
-    public MainPenyelenggaraForm() {
+    public MainAdminForm2() {
         initComponents();
-        menu.initMoving(MainPenyelenggaraForm.this);
-        menu.addEventMenuSelected(new EventMenuSelected(){
+        menu.initMoving(MainAdminForm2.this);
+        menu.addEventMenuSelected(new EventMenuSelected() {
             @Override
-            public void selected (int index){
-                if (index == 0){
-                    setForm(new KelolaMagangForm());
-                }else if(index == 1){
+            public void selected(int index) {
+                if (index == 0) {
+                    setForm(new TambahAdminForm());
+                } else if (index == 1) {
+                    setForm(new MelihatDaftarAdmin());
+                } else if (index == 2) {
                     setForm(new MelihatDaftarMagang());
-                }else if(index == 2){
-                    setForm(new SeleksiPendaftarForm());
-                }else if(index == 3){
-                    System.out.println("Logout");
+                } else if (index == 3) {
+                    setForm(new MelihatDaftarPenyelenggara());
+                } else if (index == 4) {
+                    int konfirmasi = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin ingin logout?", "Konfirmasi Logout", JOptionPane.YES_NO_OPTION);
+                    if (konfirmasi == JOptionPane.YES_NO_OPTION) {       
+                        dispose();
+                        new LoginAdminForm().setVisible(true);
+                    }
                 }
-            }   
+            }
         });
     }
+
+    
+    
     
     private void setForm(JComponent com){
         MainPanel.removeAll();
@@ -136,14 +148,18 @@ public class MainPenyelenggaraForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainPenyelenggaraForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainAdminForm2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainPenyelenggaraForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainAdminForm2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainPenyelenggaraForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainAdminForm2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainPenyelenggaraForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainAdminForm2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -152,7 +168,7 @@ public class MainPenyelenggaraForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainPenyelenggaraForm().setVisible(true);
+                new MainAdminForm2().setVisible(true);
             }
         });
     }

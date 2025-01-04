@@ -28,7 +28,7 @@ public class MelihatDaftarPenyelenggara extends javax.swing.JFrame {
     
     private void loadTableDataPenyelenggara() {
     ConnectionManager conMan = new ConnectionManager();
-    Connection conn = conMan.logOn();
+    Connection conn = conMan.connectDb();
     DefaultTableModel model = new DefaultTableModel();
     model.addColumn("ID Penyelenggara");
     model.addColumn("Nama");
@@ -51,7 +51,7 @@ public class MelihatDaftarPenyelenggara extends javax.swing.JFrame {
         }
 
         tablePenyelenggara.setModel(model); // Set model ke tabel
-        conMan.logOff();
+        conMan.disconnectDb(conn);
     } catch (SQLException ex) {
         System.out.println("Error: " + ex.getMessage());
     }
@@ -213,7 +213,7 @@ public class MelihatDaftarPenyelenggara extends javax.swing.JFrame {
     if (konfirmasi == javax.swing.JOptionPane.YES_OPTION) {
         // Hapus data dari database
         ConnectionManager conMan = new ConnectionManager();
-        Connection conn = conMan.logOn();
+        Connection conn = conMan.connectDb();
         try {
             Statement stmt = conn.createStatement();
             String query = "DELETE FROM penyelenggara WHERE nama = '" + nama + "'";
@@ -228,7 +228,7 @@ public class MelihatDaftarPenyelenggara extends javax.swing.JFrame {
             System.out.println("Error: " + ex.getMessage());
             JOptionPane.showMessageDialog(this, "Terjadi kesalahan saat menghapus data.");
         } finally {
-            conMan.logOff();
+            conMan.disconnectDb(conn);
         }
 
         // Refresh tabel setelah penghapusan
