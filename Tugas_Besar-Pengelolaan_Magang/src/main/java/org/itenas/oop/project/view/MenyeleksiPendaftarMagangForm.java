@@ -4,6 +4,9 @@
  */
 package org.itenas.oop.project.view;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author aryan
@@ -162,7 +165,6 @@ public class MenyeleksiPendaftarMagangForm extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtSearchJudulMagang, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -173,8 +175,9 @@ public class MenyeleksiPendaftarMagangForm extends javax.swing.JFrame {
                             .addComponent(textUsername7)
                             .addComponent(txtSearchJudulMagang1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 35, Short.MAX_VALUE))
+                        .addComponent(btnSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 232, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,7 +223,7 @@ public class MenyeleksiPendaftarMagangForm extends javax.swing.JFrame {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         try {
             String judulMagang = txtSearchJudulMagang.getText();
-            tampilkanDataMagang(judulMagang);
+//            tampilkanDataMagang(judulMagang);
 
         }catch(NumberFormatException ex){
             JOptionPane.showMessageDialog(null, "Anda Salah Memasukkan Judul!");
@@ -232,12 +235,12 @@ public class MenyeleksiPendaftarMagangForm extends javax.swing.JFrame {
 
         TableModel model = tabelMagang.getModel();
 
-        txtJudulPenyelenggara.setText(model.getValueAt(i, 0).toString());
-        txtLokasiPenyelenggara.setText(model.getValueAt(i, 2).toString());
-        txtTipeMagang.setSelectedItem(model.getValueAt(i, 3).toString());
-        txtPosisiPenyelenggara.setText(model.getValueAt(i, 4).toString());
-        txtDeskripsiPenyelenggara.setText(model.getValueAt(i, 5).toString());
-        txtKualifikasiPenyelenggara.setText(model.getValueAt(i, 6).toString());
+//        txtJudulPenyelenggara.setText(model.getValueAt(i, 0).toString());
+//        txtLokasiPenyelenggara.setText(model.getValueAt(i, 2).toString());
+//        txtTipeMagang.setSelectedItem(model.getValueAt(i, 3).toString());
+//        txtPosisiPenyelenggara.setText(model.getValueAt(i, 4).toString());
+//        txtDeskripsiPenyelenggara.setText(model.getValueAt(i, 5).toString());
+//        txtKualifikasiPenyelenggara.setText(model.getValueAt(i, 6).toString());
     }//GEN-LAST:event_tabelMagangMouseClicked
 
     private void tabelMagang1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMagang1MouseClicked

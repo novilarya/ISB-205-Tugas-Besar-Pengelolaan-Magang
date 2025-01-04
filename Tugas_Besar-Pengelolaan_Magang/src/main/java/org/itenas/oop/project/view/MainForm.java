@@ -4,6 +4,10 @@
  */
 package org.itenas.oop.project.view;
 
+import org.itenas.oop.project.view.LoginAdminForm;
+import org.itenas.oop.project.view.LoginPendaftarForm;
+import org.itenas.oop.project.view.LoginPenyelenggaraForm;
+
 /**
  *
  * @author aryan

@@ -32,7 +32,7 @@ public class MainPenyelenggaraForm extends javax.swing.JFrame {
                 }else if(index == 2){
                     setForm(new SeleksiPendaftarForm());
                 }else if(index == 3){
-                    System.out.println("Logout");
+                    System.out.println("Belum ada lek");
                 }
             }   
         });
