@@ -66,7 +66,7 @@ public class ControllerLogin {
 
     public int register(String nama, String user, String pwd){
         int stat = 0;
-        String query = "INSERT INTO admin (nama, username, password) VALUES ('"+nama+"', '"+user+"', '"+pwd+"');";
+        String query = "INSERT INTO daftar_akun (jenis_akun, nama, username, password) VALUES ('Admin', '"+nama+"', '"+user+"', '"+pwd+"');";
         conMan = new ConnectionManager();
         conn = conMan.connectDb();
         try {

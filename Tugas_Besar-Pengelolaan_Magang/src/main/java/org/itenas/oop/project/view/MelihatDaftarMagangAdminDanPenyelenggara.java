@@ -25,9 +25,6 @@ public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JFrame
     private DefaultTableModel model;
     private ConnectionManager conMan;
     private Connection conn;
-    
-
-    
 
     public final void getData() {
     jPanel3.removeAll();
