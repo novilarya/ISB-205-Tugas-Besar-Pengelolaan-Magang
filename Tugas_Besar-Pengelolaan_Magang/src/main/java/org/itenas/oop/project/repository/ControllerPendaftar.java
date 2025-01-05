@@ -14,11 +14,17 @@ import java.util.Scanner;
 import org.itenas.oop.project.connection.ConnectionManager;
 import org.itenas.oop.project.model.Magang;
 
-public class ControllerMagang {
-    Scanner input = new Scanner(System.in);
+import org.itenas.oop.project.model.Pendaftar;
+
+/**
+ *
+ * @author aryan
+ */
+public class ControllerPendaftar {
+Scanner input = new Scanner(System.in);
     ConnectionManager conMan = new ConnectionManager();
     Connection con = conMan.connectDb();
-    String pendaftar = null;
+    String penyelenggara = null;
     
     public String mengambilInstansi() throws SQLException{
         conMan = new ConnectionManager();
@@ -37,14 +43,14 @@ public class ControllerMagang {
         return instansi;
     }
     
-    public boolean insertMagang(String judulMagang, String lokasi, String tipeMagang, String posisiMagang, String deskripsiMagang, String kualifikasiMagang){        
+    public boolean insertPendaftar(String username, String password, String nama, String jenisKelamin, String pendidikanSaatIni, int umur){        
        
         try {
             Statement stm = con.createStatement();
-            String penyelenggara = mengambilInstansi();
-            String query2 = "INSERT INTO daftarmagang "
-                + "(judul, penyelenggara, lokasi, tipe, posisi, deskripsi, kualifikasi)"
-                + "values ('" + judulMagang + "', '" + penyelenggara + "', '" + lokasi + "', '" + tipeMagang + "', '" + posisiMagang + "', '" + deskripsiMagang + "', '" + kualifikasiMagang + "')";
+//            String penyelenggara = mengambilInstansi();
+            String query2 = "INSERT INTO daftarpendaftar "
+                + "(username, password, nama, jenis_kelamin, pendidikan_saat_ini, umur)"
+                + "values ('" + username + "', '" + password + "', '" + nama + "', '" + jenisKelamin + "', '" + pendidikanSaatIni + "', '" + umur + "')";
         
             stm.executeUpdate(query2);
             
@@ -54,11 +60,9 @@ public class ControllerMagang {
             return false;
         } 
            
-    }  
-    
+    }
 
-
-    public boolean updateMagang(String judulMagang, String penyelenggara, String lokasi, String tipeMagang, String posisiMagang, String deskripsiMagang, String kualifikasiMagang, String judul){
+ /*   public boolean updateMagang(String judulMagang, String penyelenggara, String lokasi, String tipeMagang, String posisiMagang, String deskripsiMagang, String kualifikasiMagang, String judul){
         String query = "UPDATE daftarmagang SET judul = '"
                 + judulMagang + "', penyelenggara = '"
                 + penyelenggara + "', lokasi = '"                
@@ -76,9 +80,9 @@ public class ControllerMagang {
             System.out.println(ex.toString());
             return false;
         }
-    }    
+    }*/    
     
-    public boolean deleteMagang(String judulMagang){
+/*    public boolean deleteMagang(String judulMagang){
         String query = "DELETE FROM daftarmagang WHERE judul = '" + judulMagang + "'";
         try {
             Statement stm = con.createStatement();
@@ -88,48 +92,42 @@ public class ControllerMagang {
             System.out.println(ex.toString());
             return false;
         }
-    }
+    }*/
     
-    public Magang mencariBerdasarkanJudul(String judulMagang){
-        Magang magang = new Magang();
+    public Pendaftar mencariBerdasarkanNama(String namaPendaftar){
+        Pendaftar pendaftar = new Pendaftar();
         try{
             Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM daftarmagang WHERE judul LIKE '%" + judulMagang + "%'");
+            ResultSet rs = stm.executeQuery("SELECT * FROM daftarpendaftar WHERE nama LIKE '%" + namaPendaftar + "%'");
             while (rs.next()){
-                magang.setJudulMagang(rs.getString("judul"));
-                magang.setPenyelenggara(rs.getString("penyelenggara"));
-                magang.setLokasi(rs.getString("lokasi"));
-                magang.setTipeMagang(rs.getString("tipe"));
-                magang.setPosisiMagang(rs.getString("posisi"));
-                magang.setDeskripsiMagang(rs.getString("deskripsi"));
-                magang.setKualifikasiMagang(rs.getString("kualifikasi"));
+                pendaftar.setNama(rs.getString("nama"));
             }
         }catch(SQLException ex){
             System.out.println(ex.toString());
         }    
-        return magang;
+        return pendaftar;
     }
 
-    public List<Magang> showMagang(){
-        List<Magang> listMagang = new ArrayList<Magang>();
+    public List<Pendaftar> showPendaftar(){
+        List<Pendaftar> listPendaftar = new ArrayList<Pendaftar>();
         try {
             Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM daftarmagang");
+            ResultSet rs = stm.executeQuery("SELECT * FROM daftarpendaftar");
             while (rs.next()) {                
-                Magang magang = new Magang();
-                magang.setJudulMagang(rs.getString("judul"));
-                magang.setPenyelenggara(rs.getString("penyelenggara"));
-                magang.setLokasi(rs.getString("lokasi"));
-                magang.setTipeMagang(rs.getString("tipe"));
-                magang.setPosisiMagang(rs.getString("posisi"));
-                magang.setDeskripsiMagang(rs.getString("deskripsi"));
-                magang.setKualifikasiMagang(rs.getString("kualifikasi"));
+                Pendaftar pendaftar = new Pendaftar();
+                pendaftar.setIdPendaftar(rs.getString("id_pendaftar"));
+                pendaftar.setUsername(rs.getString("username"));
+                pendaftar.setPassword(rs.getString("password"));
+                pendaftar.setNama(rs.getString("nama"));
+                pendaftar.setJenisKelamin(rs.getString("jenis_kelamin"));
+                pendaftar.setPendidikanSaatIni(rs.getString("pendidikan_saat_ini"));
+                pendaftar.setUmur(rs.getInt("umur"));
 
-                listMagang.add(magang);
+                listPendaftar.add(pendaftar);
             }
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
-        return listMagang;
-    }    
+        return listPendaftar;
+    }       
 }
