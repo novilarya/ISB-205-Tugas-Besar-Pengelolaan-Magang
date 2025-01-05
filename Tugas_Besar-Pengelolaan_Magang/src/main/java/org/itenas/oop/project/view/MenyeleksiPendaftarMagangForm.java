@@ -221,7 +221,7 @@ public class MenyeleksiPendaftarMagangForm extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSearchJudulMagangActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-<<<<<<< HEAD
+
         try {
             String judulMagang = txtSearchJudulMagang.getText();
 //            tampilkanDataMagang(judulMagang);
@@ -229,7 +229,7 @@ public class MenyeleksiPendaftarMagangForm extends javax.swing.JFrame {
         }catch(NumberFormatException ex){
             JOptionPane.showMessageDialog(null, "Anda Salah Memasukkan Judul!");
         }
-=======
+
 //        try {
 //            String judulMagang = txtSearchJudulMagang.getText();
 //            tampilkanDataMagang(judulMagang);
@@ -237,19 +237,17 @@ public class MenyeleksiPendaftarMagangForm extends javax.swing.JFrame {
 //        }catch(NumberFormatException ex){
 //            JOptionPane.showMessageDialog(null, "Anda Salah Memasukkan Judul!");
 //        }
->>>>>>> d24f42d7b82f30e9dd65b28bb036626e7d12c10c
+
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void tabelMagangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMagangMouseClicked
         int i = tabelMagang.getSelectedRow();
 
-<<<<<<< HEAD
         TableModel model = tabelMagang.getModel();
 
-=======
 //        TableModel model = tabelMagang.getModel();
 //
->>>>>>> d24f42d7b82f30e9dd65b28bb036626e7d12c10c
+
 //        txtJudulPenyelenggara.setText(model.getValueAt(i, 0).toString());
 //        txtLokasiPenyelenggara.setText(model.getValueAt(i, 2).toString());
 //        txtTipeMagang.setSelectedItem(model.getValueAt(i, 3).toString());

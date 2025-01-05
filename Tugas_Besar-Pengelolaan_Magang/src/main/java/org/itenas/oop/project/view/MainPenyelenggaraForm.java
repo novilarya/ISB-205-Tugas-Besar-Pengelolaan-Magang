@@ -4,25 +4,32 @@
  */
 package org.itenas.oop.project.view;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
+import org.itenas.oop.project.component.DataDiriPenyelenggara;
 import org.itenas.oop.project.event.EventMenuSelected;
 import org.itenas.oop.project.component.KelolaMagangForm;
 import org.itenas.oop.project.component.MelihatDaftarMagang;
 import org.itenas.oop.project.component.SeleksiPendaftarForm;
+import org.itenas.oop.project.connection.ConnectionManager;
 
 /**
  *
  * @author aryan
  */
 public class MainPenyelenggaraForm extends javax.swing.JFrame {
-
-    /**
-     * Creates new form MainPenyelenggara
-     */
+    private ConnectionManager conMan;
+    private Connection conn;
+    
     public MainPenyelenggaraForm() {
         initComponents();
-        menu.initMoving(MainPenyelenggaraForm.this);
-        menu.addEventMenuSelected(new EventMenuSelected(){
+        menuPenyelenggara1.initMoving(MainPenyelenggaraForm.this);
+        menuPenyelenggara1.addEventMenuSelected(new EventMenuSelected(){
             @Override
             public void selected (int index){
                 if (index == 0){
@@ -32,7 +39,30 @@ public class MainPenyelenggaraForm extends javax.swing.JFrame {
                 }else if(index == 2){
                     setForm(new SeleksiPendaftarForm());
                 }else if(index == 3){
-                    System.out.println("Belum ada lek");
+                    int konfirmasi = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin ingin logout?", "Konfirmasi Logout", JOptionPane.YES_NO_OPTION);
+                    if (konfirmasi == JOptionPane.YES_NO_OPTION) {  
+                        try {
+                            conMan = new ConnectionManager();
+                            conn = conMan.connectDb();
+                            Statement stm = conn.createStatement();
+                            stm.executeUpdate("TRUNCATE TABLE temp_daftar_akun;");                            
+                        } catch (SQLException ex) {
+                            System.out.println("error: " + ex.getMessage());                            
+                        }
+                        dispose();
+                        new LoginUtama().setVisible(true);
+                        
+                    }
+                }
+            }   
+        });
+        
+        headerMenu1.initMoving(MainPenyelenggaraForm.this);
+        headerMenu1.addEventMenuSelected(new EventMenuSelected(){
+            @Override
+            public void selected (int index){
+                if (index == 0){
+                    setForm(new DataDiriPenyelenggara());
                 }
             }   
         });
@@ -55,24 +85,13 @@ public class MainPenyelenggaraForm extends javax.swing.JFrame {
     private void initComponents() {
 
         panelBorder1 = new org.itenas.oop.project.panel.PanelBorder();
-        menu = new org.itenas.oop.project.component.MenuAdmin();
-        header1 = new org.itenas.oop.project.component.Header();
         MainPanel = new javax.swing.JPanel();
+        menuPenyelenggara1 = new org.itenas.oop.project.component.MenuPenyelenggara();
+        headerMenu1 = new org.itenas.oop.project.component.HeaderMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panelBorder1.setBackground(new java.awt.Color(231, 227, 217));
-
-        javax.swing.GroupLayout header1Layout = new javax.swing.GroupLayout(header1);
-        header1.setLayout(header1Layout);
-        header1Layout.setHorizontalGroup(
-            header1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 730, Short.MAX_VALUE)
-        );
-        header1Layout.setVerticalGroup(
-            header1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 49, Short.MAX_VALUE)
-        );
 
         MainPanel.setBackground(new java.awt.Color(246, 244, 240));
         MainPanel.setOpaque(false);
@@ -83,26 +102,24 @@ public class MainPenyelenggaraForm extends javax.swing.JFrame {
         panelBorder1Layout.setHorizontalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(header1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(menuPenyelenggara1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(headerMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelBorder1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(0, 0, 0))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 724, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         panelBorder1Layout.setVerticalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBorder1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelBorder1Layout.createSequentialGroup()
-                        .addComponent(header1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelBorder1Layout.createSequentialGroup()
+                        .addComponent(headerMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(menuPenyelenggara1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -159,8 +176,8 @@ public class MainPenyelenggaraForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
-    private org.itenas.oop.project.component.Header header1;
-    private org.itenas.oop.project.component.MenuAdmin menu;
+    private org.itenas.oop.project.component.HeaderMenu headerMenu1;
+    private org.itenas.oop.project.component.MenuPenyelenggara menuPenyelenggara1;
     private org.itenas.oop.project.panel.PanelBorder panelBorder1;
     // End of variables declaration//GEN-END:variables
 }

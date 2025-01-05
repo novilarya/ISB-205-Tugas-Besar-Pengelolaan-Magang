@@ -45,7 +45,7 @@ public class MelihatDaftarPenyelenggara extends javax.swing.JPanel {
 
         try {
             Statement stmt = conn.createStatement();
-            String query = "SELECT id_penyelenggara, nama, instansi, username FROM penyelenggara";
+            String query = "SELECT id_penyelenggara, nama, instansi, username FROM daftarpenyelenggara";
             ResultSet rs = stmt.executeQuery(query);
 
             while (rs.next()) {

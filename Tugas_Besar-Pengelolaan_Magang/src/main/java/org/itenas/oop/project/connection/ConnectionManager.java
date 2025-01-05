@@ -15,7 +15,7 @@ public class ConnectionManager {
 
     private final String url = "jdbc:mysql://localhost:3306/isb-205-tugas_akhir-pengelolaan_magang";
     private final String username = "root";
-    private final String password = "basdat2024";
+    private final String password = "Sql1234";
     private final String driver = "com.mysql.cj.jdbc.Driver";
     
     public ConnectionManager(){

@@ -40,7 +40,7 @@ public class MainAdminForm2 extends javax.swing.JFrame {
                     int konfirmasi = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin ingin logout?", "Konfirmasi Logout", JOptionPane.YES_NO_OPTION);
                     if (konfirmasi == JOptionPane.YES_NO_OPTION) {       
                         dispose();
-                        new LoginAdminForm().setVisible(true);
+                        new LoginUtama().setVisible(true);
                     }
                 }
             }
