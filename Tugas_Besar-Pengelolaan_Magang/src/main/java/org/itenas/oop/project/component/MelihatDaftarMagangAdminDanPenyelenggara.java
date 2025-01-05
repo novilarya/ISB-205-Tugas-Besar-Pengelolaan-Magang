@@ -1,5 +1,6 @@
 package org.itenas.oop.project.component;
 
+<<<<<<< HEAD
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -23,11 +24,14 @@ import javax.swing.*;
 import java.awt.*;
 import org.itenas.oop.project.repository.RoundedPanel;
 
+=======
+>>>>>>> f0d96a677e5fbd60c52133207f422fc770f230fd
 /**
  *
  * @author aryan
  */
 public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JPanel {
+<<<<<<< HEAD
     private Boolean hasil;
     private ControllerMagang conMagang = new ControllerMagang();
     private DefaultTableModel model;
@@ -175,6 +179,14 @@ public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JPanel
         
         // Load initial data
         getData();        
+=======
+
+    /**
+     * Creates new form KelolaMagangForm
+     */
+    public MelihatDaftarMagangAdminDanPenyelenggara() {
+        initComponents();
+>>>>>>> f0d96a677e5fbd60c52133207f422fc770f230fd
     }
 
     /**
@@ -188,6 +200,7 @@ public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JPanel
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
+<<<<<<< HEAD
         jPanel4 = new org.itenas.oop.project.component.CardMagang();
         Detail = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -204,13 +217,26 @@ public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JPanel
         jTextArea2 = new javax.swing.JTextArea();
         jTextArea3 = new javax.swing.JTextArea();
         jTextArea4 = new javax.swing.JTextArea();
+=======
+        jPanel4 = new javax.swing.JPanel();
+        Detail = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+>>>>>>> f0d96a677e5fbd60c52133207f422fc770f230fd
 
         setBackground(new java.awt.Color(239, 236, 229));
 
         jScrollPane1.setBackground(new java.awt.Color(204, 204, 204));
+<<<<<<< HEAD
         jScrollPane1.setBorder(null);
 
         jPanel3.setBackground(new java.awt.Color(239, 236, 229));
+=======
+
+        jPanel3.setBackground(new java.awt.Color(153, 153, 255));
+
+        jPanel4.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel4.setForeground(new java.awt.Color(0, 0, 0));
+>>>>>>> f0d96a677e5fbd60c52133207f422fc770f230fd
 
         Detail.setBackground(new java.awt.Color(102, 102, 255));
         Detail.setText("Detail");
@@ -228,7 +254,11 @@ public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JPanel
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addContainerGap(145, Short.MAX_VALUE)
+=======
+                .addContainerGap(141, Short.MAX_VALUE)
+>>>>>>> f0d96a677e5fbd60c52133207f422fc770f230fd
                 .addComponent(Detail)
                 .addContainerGap())
             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -252,19 +282,31 @@ public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JPanel
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
+<<<<<<< HEAD
                 .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+=======
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(110, Short.MAX_VALUE))
+>>>>>>> f0d96a677e5fbd60c52133207f422fc770f230fd
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(708, Short.MAX_VALUE))
+=======
+                .addGap(26, 26, 26)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(622, Short.MAX_VALUE))
+>>>>>>> f0d96a677e5fbd60c52133207f422fc770f230fd
         );
 
         jScrollPane1.setViewportView(jPanel3);
 
+<<<<<<< HEAD
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Judul");
@@ -352,29 +394,39 @@ public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JPanel
                 .addContainerGap())
         );
 
+=======
+>>>>>>> f0d96a677e5fbd60c52133207f422fc770f230fd
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cardMagang1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+=======
+                .addGap(0, 473, Short.MAX_VALUE))
+>>>>>>> f0d96a677e5fbd60c52133207f422fc770f230fd
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
+<<<<<<< HEAD
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cardMagang1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+=======
+>>>>>>> f0d96a677e5fbd60c52133207f422fc770f230fd
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void DetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DetailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DetailActionPerformed
+<<<<<<< HEAD
     public class InternshipListItem extends javax.swing.JPanel {
     private Magang magang;
     private MelihatDaftarMagangAdminDanPenyelenggara parent;
@@ -435,5 +487,15 @@ public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JPanel
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
+=======
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Detail;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+>>>>>>> f0d96a677e5fbd60c52133207f422fc770f230fd
     // End of variables declaration//GEN-END:variables
 }
