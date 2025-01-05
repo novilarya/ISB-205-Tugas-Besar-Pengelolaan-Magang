@@ -47,6 +47,7 @@ public class RegisterUtama extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Regist berhasil", "Pesan", JOptionPane.INFORMATION_MESSAGE);
         new LoginUtama().setVisible(true);
         new RegisterUtama().setVisible(false);
+        dispose();
     }
     
     public void showPassword(){

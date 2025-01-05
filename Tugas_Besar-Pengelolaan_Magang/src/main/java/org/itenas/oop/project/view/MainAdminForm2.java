@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import org.itenas.oop.project.event.EventMenuSelected;
 import org.itenas.oop.project.component.TambahAdminForm;
 import org.itenas.oop.project.component.MelihatDaftarAdmin;
-import org.itenas.oop.project.component.MelihatDaftarMagang;
+import org.itenas.oop.project.component.MelihatDaftarMagangAdminDanPenyelenggara;
 import org.itenas.oop.project.component.MelihatDaftarPenyelenggara;
 import org.itenas.oop.project.component.SeleksiPendaftarForm;
 
@@ -33,7 +33,7 @@ public class MainAdminForm2 extends javax.swing.JFrame {
                 } else if (index == 1) {
                     setForm(new MelihatDaftarAdmin());
                 } else if (index == 2) {
-                    setForm(new MelihatDaftarMagang());
+                    setForm(new MelihatDaftarMagangAdminDanPenyelenggara());
                 } else if (index == 3) {
                     setForm(new MelihatDaftarPenyelenggara());
                 } else if (index == 4) {

@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import org.itenas.oop.project.component.DataDiriPenyelenggara;
 import org.itenas.oop.project.event.EventMenuSelected;
 import org.itenas.oop.project.component.KelolaMagangForm;
-import org.itenas.oop.project.component.MelihatDaftarMagang;
+import org.itenas.oop.project.component.MelihatDaftarMagangAdminDanPenyelenggara;
 import org.itenas.oop.project.component.SeleksiPendaftarForm;
 import org.itenas.oop.project.connection.ConnectionManager;
 
@@ -35,9 +35,9 @@ public class MainPenyelenggaraForm extends javax.swing.JFrame {
                 if (index == 0){
                     setForm(new KelolaMagangForm());
                 }else if(index == 1){
-                    setForm(new MelihatDaftarMagang());
+                    setForm(new MelihatDaftarMagangAdminDanPenyelenggara());
                 }else if(index == 2){
-                    setForm(new SeleksiPendaftarForm());
+//                    setForm(new SeleksiPendaftarForm());
                 }else if(index == 3){
                     int konfirmasi = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin ingin logout?", "Konfirmasi Logout", JOptionPane.YES_NO_OPTION);
                     if (konfirmasi == JOptionPane.YES_NO_OPTION) {  

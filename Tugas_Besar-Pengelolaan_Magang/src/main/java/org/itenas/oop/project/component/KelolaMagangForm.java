@@ -63,12 +63,12 @@ public class KelolaMagangForm extends javax.swing.JPanel {
         txtJudulPenyelenggara.setText("");
         txtLokasiPenyelenggara.setText("");
         txtPosisiPenyelenggara.setText("");
-        txtDeskripsiPenyelenggara.setText("");
+        txtKualifikasiPenyelenggara.setText("");
         txtKualifikasiPenyelenggara.setText("");
         txtJudulPenyelenggara.setEditable(true);
         txtLokasiPenyelenggara.setEditable(true);
         txtPosisiPenyelenggara.setEditable(true);
-        txtDeskripsiPenyelenggara.setEditable(true);
+        txtKualifikasiPenyelenggara.setEditable(true);
         txtKualifikasiPenyelenggara.setEditable(true);
     }    
  
@@ -111,10 +111,8 @@ public class KelolaMagangForm extends javax.swing.JPanel {
         txtTipeMagang = new javax.swing.JComboBox<>();
         textUsername3 = new javax.swing.JLabel();
         txtPosisiPenyelenggara = new javax.swing.JTextField();
-        txtDeskripsiPenyelenggara = new javax.swing.JTextField();
         textUsername4 = new javax.swing.JLabel();
         textUsername5 = new javax.swing.JLabel();
-        txtKualifikasiPenyelenggara = new javax.swing.JTextField();
         btnDelete = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
@@ -124,6 +122,10 @@ public class KelolaMagangForm extends javax.swing.JPanel {
         btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelMagang = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtDeskripsiPenyelenggara = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtKualifikasiPenyelenggara = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(239, 236, 229));
 
@@ -180,15 +182,6 @@ public class KelolaMagangForm extends javax.swing.JPanel {
             }
         });
 
-        txtDeskripsiPenyelenggara.setBackground(new java.awt.Color(239, 239, 239));
-        txtDeskripsiPenyelenggara.setForeground(new java.awt.Color(51, 51, 51));
-        txtDeskripsiPenyelenggara.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(191, 191, 191), 1, true));
-        txtDeskripsiPenyelenggara.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDeskripsiPenyelenggaraActionPerformed(evt);
-            }
-        });
-
         textUsername4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         textUsername4.setForeground(new java.awt.Color(51, 51, 51));
         textUsername4.setText("Deskripsi");
@@ -196,15 +189,6 @@ public class KelolaMagangForm extends javax.swing.JPanel {
         textUsername5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         textUsername5.setForeground(new java.awt.Color(51, 51, 51));
         textUsername5.setText("Kualifikasi");
-
-        txtKualifikasiPenyelenggara.setBackground(new java.awt.Color(239, 239, 239));
-        txtKualifikasiPenyelenggara.setForeground(new java.awt.Color(51, 51, 51));
-        txtKualifikasiPenyelenggara.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(191, 191, 191), 1, true));
-        txtKualifikasiPenyelenggara.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtKualifikasiPenyelenggaraActionPerformed(evt);
-            }
-        });
 
         btnDelete.setBackground(new java.awt.Color(255, 153, 153));
         btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -293,6 +277,19 @@ public class KelolaMagangForm extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tabelMagang);
 
+        txtDeskripsiPenyelenggara.setBackground(new java.awt.Color(239, 239, 239));
+        txtDeskripsiPenyelenggara.setColumns(20);
+        txtDeskripsiPenyelenggara.setForeground(new java.awt.Color(191, 191, 191));
+        txtDeskripsiPenyelenggara.setRows(5);
+        txtDeskripsiPenyelenggara.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(191, 191, 191), 1, true));
+        jScrollPane2.setViewportView(txtDeskripsiPenyelenggara);
+
+        txtKualifikasiPenyelenggara.setBackground(new java.awt.Color(239, 239, 239));
+        txtKualifikasiPenyelenggara.setColumns(20);
+        txtKualifikasiPenyelenggara.setRows(5);
+        txtKualifikasiPenyelenggara.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(191, 191, 191), 1, true));
+        jScrollPane3.setViewportView(txtKualifikasiPenyelenggara);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -300,6 +297,8 @@ public class KelolaMagangForm extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane3)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,10 +312,9 @@ public class KelolaMagangForm extends javax.swing.JPanel {
                             .addComponent(txtPosisiPenyelenggara)
                             .addComponent(textUsername2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTipeMagang, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(txtDeskripsiPenyelenggara, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtKualifikasiPenyelenggara)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textUsername6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -327,12 +325,11 @@ public class KelolaMagangForm extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textUsername4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textUsername5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtSearchJudulMagang, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(textUsername6))
+                            .addComponent(textUsername5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -360,11 +357,11 @@ public class KelolaMagangForm extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textUsername4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDeskripsiPenyelenggara, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textUsername5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtKualifikasiPenyelenggara, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -372,7 +369,7 @@ public class KelolaMagangForm extends javax.swing.JPanel {
                         .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
+                .addGap(5, 5, 5)
                 .addComponent(textUsername6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -380,7 +377,7 @@ public class KelolaMagangForm extends javax.swing.JPanel {
                     .addComponent(txtSearchJudulMagang, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -399,14 +396,6 @@ public class KelolaMagangForm extends javax.swing.JPanel {
     private void txtPosisiPenyelenggaraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPosisiPenyelenggaraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPosisiPenyelenggaraActionPerformed
-
-    private void txtDeskripsiPenyelenggaraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDeskripsiPenyelenggaraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDeskripsiPenyelenggaraActionPerformed
-
-    private void txtKualifikasiPenyelenggaraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKualifikasiPenyelenggaraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtKualifikasiPenyelenggaraActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         int i = tabelMagang.getSelectedRow();
@@ -442,7 +431,7 @@ public class KelolaMagangForm extends javax.swing.JPanel {
         String newLokasi = txtLokasiPenyelenggara.getText();
         String newTipe = (String)txtTipeMagang.getSelectedItem();
         String newPosisi = txtPosisiPenyelenggara.getText();
-        String newDeskripsi = txtDeskripsiPenyelenggara.getText();
+        String newDeskripsi = txtKualifikasiPenyelenggara.getText();
         String newKualifikasi = txtKualifikasiPenyelenggara.getText();
 
         hasil = conMagang.updateMagang(newJudul, penyelenggara, newLokasi, newTipe, newPosisi, newDeskripsi, newKualifikasi, judulMagang);
@@ -451,7 +440,7 @@ public class KelolaMagangForm extends javax.swing.JPanel {
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-        hasil = conMagang.insertMagang(txtJudulPenyelenggara.getText(), txtLokasiPenyelenggara.getText(), (String)txtTipeMagang.getSelectedItem(), txtPosisiPenyelenggara.getText(), txtDeskripsiPenyelenggara.getText(), txtKualifikasiPenyelenggara.getText());
+        hasil = conMagang.insertMagang(txtJudulPenyelenggara.getText(), txtLokasiPenyelenggara.getText(), (String)txtTipeMagang.getSelectedItem(), txtPosisiPenyelenggara.getText(), txtKualifikasiPenyelenggara.getText(), txtKualifikasiPenyelenggara.getText());
         if (hasil){
             JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
             getData();
@@ -484,7 +473,7 @@ public class KelolaMagangForm extends javax.swing.JPanel {
         txtLokasiPenyelenggara.setText(model.getValueAt(i, 2).toString());
         txtTipeMagang.setSelectedItem(model.getValueAt(i, 3).toString());
         txtPosisiPenyelenggara.setText(model.getValueAt(i, 4).toString());
-        txtDeskripsiPenyelenggara.setText(model.getValueAt(i, 5).toString());
+        txtKualifikasiPenyelenggara.setText(model.getValueAt(i, 5).toString());
         txtKualifikasiPenyelenggara.setText(model.getValueAt(i, 6).toString());
     }//GEN-LAST:event_tabelMagangMouseClicked
 
@@ -496,6 +485,8 @@ public class KelolaMagangForm extends javax.swing.JPanel {
     private javax.swing.JButton btnSubmit;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable tabelMagang;
     private javax.swing.JLabel textUsername;
     private javax.swing.JLabel textUsername1;
@@ -504,9 +495,9 @@ public class KelolaMagangForm extends javax.swing.JPanel {
     private javax.swing.JLabel textUsername4;
     private javax.swing.JLabel textUsername5;
     private javax.swing.JLabel textUsername6;
-    private javax.swing.JTextField txtDeskripsiPenyelenggara;
+    private javax.swing.JTextArea txtDeskripsiPenyelenggara;
     private javax.swing.JTextField txtJudulPenyelenggara;
-    private javax.swing.JTextField txtKualifikasiPenyelenggara;
+    private javax.swing.JTextArea txtKualifikasiPenyelenggara;
     private javax.swing.JTextField txtLokasiPenyelenggara;
     private javax.swing.JTextField txtPosisiPenyelenggara;
     private javax.swing.JTextField txtSearchJudulMagang;
