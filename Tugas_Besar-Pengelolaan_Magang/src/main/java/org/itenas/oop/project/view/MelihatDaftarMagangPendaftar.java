@@ -14,12 +14,13 @@ import java.awt.FlowLayout;
 import org.itenas.oop.project.connection.ConnectionManager;
 import org.itenas.oop.project.model.Magang;
 import org.itenas.oop.project.repository.ControllerMagang;
+import org.itenas.oop.project.view.PendaftaranForm; 
 
 /**
  *
  * @author ASUS
  */
-public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JFrame {
+public class MelihatDaftarMagangPendaftar extends javax.swing.JFrame {
     private Boolean hasil;
     private ControllerMagang conMagang = new ControllerMagang();
     private DefaultTableModel model;
@@ -155,7 +156,7 @@ public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JFrame
         jTextArea4.setText("");
         jLabel1.setText("Judul");
     }
-    public MelihatDaftarMagangAdminDanPenyelenggara() {
+    public MelihatDaftarMagangPendaftar() {
         initComponents();
         
         // Configure scroll pane
@@ -202,6 +203,7 @@ public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JFrame
         jTextArea3 = new javax.swing.JTextArea();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
+        jButtonDaftar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -307,6 +309,13 @@ public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JFrame
         jTextArea4.setRows(5);
         jScrollPane5.setViewportView(jTextArea4);
 
+        jButtonDaftar.setText("Daftar");
+        jButtonDaftar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDaftarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -337,7 +346,8 @@ public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JFrame
                                 .addGap(66, 66, 66)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(DeskripsiMagang)
-                                    .addComponent(jScrollPane5))))))
+                                    .addComponent(jScrollPane5)))
+                            .addComponent(jButtonDaftar, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -367,7 +377,9 @@ public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JFrame
                 .addComponent(LokasiMagang)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonDaftar)
+                .addGap(53, 53, 53))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -410,6 +422,13 @@ public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_DetailActionPerformed
 
+    private void jButtonDaftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDaftarActionPerformed
+        // TODO add your handling code here:
+        PendaftaranForm formPendaftaran = new PendaftaranForm();
+    formPendaftaran.setVisible(true); // Menampilkan form pendaftaran
+    this.dispose(); // Menutup form saat ini
+    }//GEN-LAST:event_jButtonDaftarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -427,28 +446,29 @@ public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JFrame
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MelihatDaftarMagangAdminDanPenyelenggara.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MelihatDaftarMagangPendaftar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MelihatDaftarMagangAdminDanPenyelenggara.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MelihatDaftarMagangPendaftar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MelihatDaftarMagangAdminDanPenyelenggara.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MelihatDaftarMagangPendaftar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MelihatDaftarMagangAdminDanPenyelenggara.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MelihatDaftarMagangPendaftar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MelihatDaftarMagangAdminDanPenyelenggara().setVisible(true);
+                new MelihatDaftarMagangPendaftar().setVisible(true);
             }
         });
     }
     public class InternshipListItem extends javax.swing.JPanel {
     private Magang magang;
-    private MelihatDaftarMagangAdminDanPenyelenggara parent;
+    private MelihatDaftarMagangPendaftar parent;
     
-    public InternshipListItem(Magang magang, MelihatDaftarMagangAdminDanPenyelenggara parent) {
+    public InternshipListItem(Magang magang, MelihatDaftarMagangPendaftar parent) {
         this.magang = magang;
         this.parent = parent;
         initializePanel();
@@ -483,7 +503,7 @@ public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JFrame
         add(Box.createRigidArea(new Dimension(0, 5)));
         add(detailBtn);
     }
-}
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DeskripsiMagang;
@@ -491,6 +511,7 @@ public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JFrame
     private javax.swing.JButton Detail;
     private javax.swing.JLabel KualifikasiMagang;
     private javax.swing.JLabel LokasiMagang;
+    private javax.swing.JButton jButtonDaftar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
