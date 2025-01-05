@@ -1,13 +1,16 @@
 
 package org.itenas.oop.project.view;
 
+import java.awt.BorderLayout;
 import java.sql.Connection;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Dimension;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
+import java.awt.FlowLayout;
 import org.itenas.oop.project.connection.ConnectionManager;
 import org.itenas.oop.project.model.Magang;
 import org.itenas.oop.project.repository.ControllerMagang;
@@ -27,64 +30,100 @@ public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JFrame
     
 
     public final void getData() {
-        // Clear existing content
-        jPanel3.removeAll();
-        jPanel3.setLayout(new BoxLayout(jPanel3, BoxLayout.Y_AXIS));
-        
-        // Get internship list
-        List<Magang> listMagang = conMagang.showMagang();
-        
-        // Create and add list items for each internship
-        for (Magang magang : listMagang) {
-            JPanel itemPanel = createInternshipPanel(magang);
-            jPanel3.add(itemPanel);
-            jPanel3.add(Box.createRigidArea(new Dimension(0, 10)));
-        }
-        
-        // Refresh the panel
-        jPanel3.revalidate();
-        jPanel3.repaint();
+    jPanel3.removeAll();
+    jPanel3.setLayout(new BoxLayout(jPanel3, BoxLayout.Y_AXIS));
+    
+    // Tambah spacing di awal panel
+    jPanel3.add(Box.createRigidArea(new Dimension(0, 20)));
+    
+    List<Magang> listMagang = conMagang.showMagang();
+    
+    for (Magang magang : listMagang) {
+        JPanel itemPanel = createInternshipPanel(magang);
+        jPanel3.add(itemPanel);
+        // Menambah jarak 20 pixel antara panel
+        jPanel3.add(Box.createRigidArea(new Dimension(0, 20))); 
     }
-    private JPanel createInternshipPanel(Magang magang) {
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        panel.setBackground(Color.WHITE);
-        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        
-        
-        // Title
-        JLabel titleLabel = new JLabel(magang.getJudulMagang());
-        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        
-        // Penyelenggara
-        JLabel penyelenggaraLabel = new JLabel(magang.getPenyelenggara());
-        penyelenggaraLabel.setFont(new Font("Segoe UI", Font.ITALIC, 12));
-        
-        // Description (truncated)
-        String desc = magang.getDeskripsiMagang();
-        if (desc != null && desc.length() > 100) {
-            desc = desc.substring(0, 97) + "...";
-        }
-        JLabel descLabel = new JLabel("<html><body style='width: 200px'>" + 
-            (desc != null ? desc : "") + "</body></html>");
-        
-        // Detail button
-        JButton detailBtn = new JButton("Detail");
-        detailBtn.addActionListener(e -> showDetail(magang));
-        
-        
-        panel.add(Box.createRigidArea(new Dimension(0, 5)));
-        panel.add(titleLabel);
-        panel.add(Box.createRigidArea(new Dimension(0, 5)));
-        panel.add(penyelenggaraLabel);
-        panel.add(Box.createRigidArea(new Dimension(0, 5)));
-        panel.add(descLabel);
-        panel.add(Box.createRigidArea(new Dimension(0, 5)));
-        panel.add(detailBtn);
-        
-        return panel;
+    
+    jPanel3.add(Box.createVerticalGlue());
+    jPanel3.revalidate();
+    jPanel3.repaint();
     }
- 
+   private JPanel createInternshipPanel(Magang magang) {
+    // Main Panel
+    JPanel panel = new JPanel();
+    panel.setLayout(new BorderLayout(10, 10));
+    panel.setBackground(new Color(242, 242, 242));
+    
+    // Menambah padding yang berbeda untuk atas (25px) dan bawah (15px)
+    panel.setBorder(BorderFactory.createCompoundBorder(
+        BorderFactory.createLineBorder(new Color(200, 200, 200), 1),
+        BorderFactory.createEmptyBorder(25, 15, 15, 15) // atas:25, kiri:15, bawah:15, kanan:15
+    ));
+    
+    // Content Panel (Left side)
+    JPanel contentPanel = new JPanel();
+    contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
+    contentPanel.setBackground(new Color(242, 242, 242));
+    contentPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+    
+    // Title
+    JLabel titleLabel = new JLabel(magang.getJudulMagang());
+    titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
+    titleLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+    
+    // Organization
+    JLabel penyelenggaraLabel = new JLabel(magang.getPenyelenggara());
+    penyelenggaraLabel.setFont(new Font("Segoe UI", Font.ITALIC, 12));
+    penyelenggaraLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+    
+    // Description
+    String desc = magang.getDeskripsiMagang();
+    if (desc != null && desc.length() > 100) {
+        desc = desc.substring(0, 97) + "...";
+    }
+    JTextArea descLabel = new JTextArea(desc != null ? desc : "");
+    descLabel.setWrapStyleWord(true);
+    descLabel.setLineWrap(true);
+    descLabel.setOpaque(false);
+    descLabel.setEditable(false);
+    descLabel.setFocusable(false);
+    descLabel.setBackground(new Color(242, 242, 242));
+    descLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+    descLabel.setBorder(null);
+    descLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+    
+    // Add components to content panel
+    contentPanel.add(Box.createRigidArea(new Dimension(0, 5)));
+    contentPanel.add(titleLabel);
+    contentPanel.add(Box.createRigidArea(new Dimension(0, 8)));
+    contentPanel.add(penyelenggaraLabel);
+    contentPanel.add(Box.createRigidArea(new Dimension(0, 8)));
+    contentPanel.add(descLabel);
+    
+    // Bottom Panel for Button
+    JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+    buttonPanel.setBackground(new Color(242, 242, 242));
+    
+    // Mengurangi spacing atas tombol
+    buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 0)); // Dikurangi dari 10 menjadi 5
+    
+    // Detail Button
+    JButton detailBtn = new JButton("Detail");
+    detailBtn.setBackground(new Color(102, 102, 255)); // Warna biru seperti di gambar
+    detailBtn.setForeground(Color.WHITE); // Text warna putih
+    detailBtn.addActionListener(e -> showDetail(magang));
+    buttonPanel.add(detailBtn);
+    
+    // Add panels to main panel
+    panel.add(contentPanel, BorderLayout.CENTER);
+    panel.add(buttonPanel, BorderLayout.SOUTH);
+    
+    // Set maximum size
+    panel.setMaximumSize(new Dimension(Integer.MAX_VALUE, panel.getPreferredSize().height));
+    
+    return panel;
+    }
     private void showDetail(Magang magang) {
         if (magang != null) {
             jLabel1.setText(magang.getJudulMagang());
@@ -170,10 +209,12 @@ public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JFrame
 
         jScrollPane1.setBackground(new java.awt.Color(204, 204, 204));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(153, 153, 255));
 
+        jPanel4.setBackground(new java.awt.Color(204, 204, 204));
         jPanel4.setForeground(new java.awt.Color(0, 0, 0));
 
+        Detail.setBackground(new java.awt.Color(102, 102, 255));
         Detail.setText("Detail");
         Detail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,6 +222,7 @@ public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JFrame
             }
         });
 
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Deskripsi");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -218,9 +260,9 @@ public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JFrame
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(26, 26, 26)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(642, Short.MAX_VALUE))
+                .addContainerGap(622, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel3);
@@ -340,12 +382,11 @@ public class MelihatDaftarMagangAdminDanPenyelenggara extends javax.swing.JFrame
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
