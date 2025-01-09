@@ -5,12 +5,17 @@
 package org.itenas.oop.project.component;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import org.itenas.oop.project.connection.ConnectionManager;
 import org.itenas.oop.project.model.Magang;
+import org.itenas.oop.project.model.MagangPendaftar;
 import org.itenas.oop.project.model.Pendaftar;
 import org.itenas.oop.project.repository.ControllerMagang;
 import org.itenas.oop.project.repository.ControllerPendaftar;
@@ -26,8 +31,9 @@ public class SeleksiPendaftarForm extends javax.swing.JPanel {
     ControllerPendaftar conPendaftar = new ControllerPendaftar();
     private DefaultTableModel model;
     private DefaultTableModel modelPendaftar;
-    private ConnectionManager conMan;
-    private Connection conn;
+    private ConnectionManager conMan = new ConnectionManager();
+    private Connection con = conMan.connectDb();;
+    private String judulMagang = null ;
     
     public SeleksiPendaftarForm() {
         initComponents();
@@ -46,7 +52,7 @@ public class SeleksiPendaftarForm extends javax.swing.JPanel {
         modelPendaftar = new DefaultTableModel();
         tabelPendaftar.setModel(modelPendaftar);
         modelPendaftar.addColumn("Nama");
-        getDataPendaftar();
+        //getDataPendaftar();
     }
     
     public final void getDataPendaftar(){
@@ -54,16 +60,15 @@ public class SeleksiPendaftarForm extends javax.swing.JPanel {
 
         dtm.setRowCount(0);
 
-        List<Pendaftar> listPendaftar = conPendaftar.showPendaftar();
+        List<MagangPendaftar> listPendaftar = conPendaftar.showPendaftarBerdasarkanMagang(judulMagang);
         String[] data = new String[6];
-        for (Pendaftar newPendaftar : listPendaftar){
-            data[0] = newPendaftar.getUsername();
-            data[1] = newPendaftar.getPassword();
-            data[2] = newPendaftar.getNama();
-            data[3] = newPendaftar.getJenisKelamin();
-            data[4] = newPendaftar.getPendidikanSaatIni();
-            
-            data[5] = Integer.toString(newPendaftar.getUmur());
+        for (MagangPendaftar newPendaftar : listPendaftar){
+            data[0] = Integer.toString(newPendaftar.getKodeSeleksi());
+            data[1] = newPendaftar.getNama();
+            data[2] = newPendaftar.getJenisKelamin();
+            data[3] = newPendaftar.getPendidikanSaatIni();
+            data[4] = Integer.toString(newPendaftar.getUmur());
+            data[5] = newPendaftar.getJudulMagang();
             
             dtm.addRow(data);
         }       
@@ -116,36 +121,36 @@ public class SeleksiPendaftarForm extends javax.swing.JPanel {
 
         dtm.setRowCount(0);
 
-        List<Pendaftar> listPendaftar = conPendaftar.showPendaftar();
-        String[] data = new String[6];
-        for (Pendaftar newPendaftar : listPendaftar){
-            data[0] = newPendaftar.getUsername();
-            data[1] = newPendaftar.getPassword();
-            data[2] = newPendaftar.getNama();
-            data[3] = newPendaftar.getJenisKelamin();
-            data[4] = newPendaftar.getPendidikanSaatIni();
-            
-            data[5] = Integer.toString(newPendaftar.getUmur());
+        List<MagangPendaftar> listMagangPendaftar = conPendaftar.showPendaftarBerdasarkanMagang(judulMagang);
+        String[] data = new String[1];
+        for (MagangPendaftar newPendaftar : listMagangPendaftar){
+            //data[0] = Integer.toString(newPendaftar.getKodeSeleksi());
+            data[0] = newPendaftar.getNama();
+            /*data[2] = newPendaftar.getJenisKelamin();
+            data[3] = newPendaftar.getPendidikanSaatIni();
+            data[4] = Integer.toString(newPendaftar.getUmur());
+            data[5] = newPendaftar.getJudulMagang();*/
             
             dtm.addRow(data);
         }         
     } 
      
     private void tampilkanDataPendaftar(String namaPendaftar){
-        Pendaftar pendaftar = new Pendaftar();
-        pendaftar = conPendaftar.mencariBerdasarkanNama(namaPendaftar);        
+        MagangPendaftar magangPendaftar = new MagangPendaftar();
+        magangPendaftar = conPendaftar.mencariMagangPendaftarBerdasarkanNama(namaPendaftar);        
         
         DefaultTableModel dtm = (DefaultTableModel) tabelPendaftar.getModel();
         dtm.setRowCount(0);
         
-        if (pendaftar != null){
+        if (magangPendaftar != null){
             String[] data = new String[1];
-            data[0] = pendaftar.getNama();
+            data[0] = magangPendaftar.getNama();
             dtm.addRow(data);
         }else{
             JOptionPane.showMessageDialog(null,"Pendaftar dengan nama " + namaPendaftar + " tidak ditemukan!");
         }
-    }      
+    } 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -163,7 +168,7 @@ public class SeleksiPendaftarForm extends javax.swing.JPanel {
         textUsername7 = new javax.swing.JLabel();
         txtSearchNamaPendaftar = new javax.swing.JTextField();
         btnSearchNama = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
         tabelPendaftar = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(239, 236, 229));
@@ -252,7 +257,7 @@ public class SeleksiPendaftarForm extends javax.swing.JPanel {
                 tabelPendaftarMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tabelPendaftar);
+        jScrollPane3.setViewportView(tabelPendaftar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -264,20 +269,23 @@ public class SeleksiPendaftarForm extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtSearchJudulMagang, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnSearchJudul, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(textUsername6)
+                            .addComponent(textUsername7)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textUsername7)
-                                    .addComponent(txtSearchNamaPendaftar, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtSearchNamaPendaftar, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnSearchNama, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(413, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,16 +297,19 @@ public class SeleksiPendaftarForm extends javax.swing.JPanel {
                     .addComponent(btnSearchJudul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtSearchJudulMagang, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textUsername7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnSearchNama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtSearchNamaPendaftar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSearchNamaPendaftar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearchNama, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(382, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(299, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(27, 27, 27)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -315,18 +326,28 @@ public class SeleksiPendaftarForm extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Anda Salah Memasukkan Judul!");
         }
     }//GEN-LAST:event_btnSearchJudulActionPerformed
-
+    
     private void tabelMagangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMagangMouseClicked
         int i = tabelMagang.getSelectedRow();
 
         TableModel model = tabelMagang.getModel();
-/*
-        txtJudulPenyelenggara.setText(model.getValueAt(i, 0).toString());
-        txtLokasiPenyelenggara.setText(model.getValueAt(i, 2).toString());
-        txtTipeMagang.setSelectedItem(model.getValueAt(i, 3).toString());
-        txtPosisiPenyelenggara.setText(model.getValueAt(i, 4).toString());
-        txtDeskripsiPenyelenggara.setText(model.getValueAt(i, 5).toString());
-        txtKualifikasiPenyelenggara.setText(model.getValueAt(i, 6).toString()); */
+      
+        judulMagang = model.getValueAt(i, 0).toString();
+   
+        if (i >= 0) {
+            String judul = model.getValueAt(i, 0).toString();
+            
+            try {
+                Statement stm = con.createStatement();
+                String query = "INSERT INTO temp_daftar_pendaftar_magang (judul) VALUES ('" + judul + "');";
+                stm.executeUpdate(query);
+                tampilkanDataPendaftarBerdasarkanMagang(judulMagang);
+            } catch (SQLException ex) {
+                Logger.getLogger(SeleksiPendaftarForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Tidak ada baris yang dipilih!");
+        }         
     }//GEN-LAST:event_tabelMagangMouseClicked
 
     private void txtSearchNamaPendaftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchNamaPendaftarActionPerformed
@@ -344,15 +365,37 @@ public class SeleksiPendaftarForm extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSearchNamaActionPerformed
 
     private void tabelPendaftarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelPendaftarMouseClicked
-        // TODO add your handling code here:
+        int i = tabelMagang.getSelectedRow();
+        
+        if (i >= 0) { // Pastikan ada baris yang dipilih
+            TableModel model = tabelPendaftar.getModel();
+            String nama = model.getValueAt(i, 0).toString();
+            System.out.println(nama);
+            try {
+                Statement stm = con.createStatement();
+                String query = "INSERT INTO temp_daftar_pendaftar_magang (nama) VALUES ('" + nama + "');";
+                stm.executeUpdate(query);
+                new SeleksiPendaftarForm22().setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(SeleksiPendaftarForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         
+        } else {
+            JOptionPane.showMessageDialog(null, "Tidak ada baris yang dipilih!");
+        }
     }//GEN-LAST:event_tabelPendaftarMouseClicked
 
+    private boolean someCondition() {
+        return true; 
+    }
+    private void setForm(javax.swing.JPanel form) {        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSearchJudul;
     private javax.swing.JButton btnSearchNama;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable tabelMagang;
     private javax.swing.JTable tabelPendaftar;
     private javax.swing.JLabel textUsername6;

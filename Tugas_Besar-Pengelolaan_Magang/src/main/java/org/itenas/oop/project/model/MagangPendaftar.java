@@ -1,53 +1,39 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package org.itenas.oop.project.model;
 
 /**
  *
  * @author aryan
  */
-public class Pendaftar {
-    private int idPendaftar;
-    private String username;
-    private String password;
+public class MagangPendaftar {
+    private int kodeSeleksi;
     private String nama;
     private String jenisKelamin;
     private String pendidikanSaatIni;
     private int umur;
+    private String judulMagang;
 
-    public Pendaftar() {
+    public MagangPendaftar() {
     }
 
-    public Pendaftar(int idPendaftar, String username, String password, String nama, String jenisKelamin, String pendidikanSaatIni, int umur) {
-        this.idPendaftar = idPendaftar;
-        this.username = username;
-        this.password = password;
+    public MagangPendaftar(int kodeSeleksi, String nama, String jenisKelamin, String pendidikanSaatIni, int umur, String judulMagang) {
+        this.kodeSeleksi = kodeSeleksi;
         this.nama = nama;
         this.jenisKelamin = jenisKelamin;
         this.pendidikanSaatIni = pendidikanSaatIni;
         this.umur = umur;
+        this.judulMagang = judulMagang;
     }
 
-    public int getIdPendaftar() {
-        return idPendaftar;
+    public int getKodeSeleksi() {
+        return kodeSeleksi;
     }
 
-    public void setIdPendaftar(int idPendaftar) {
-        this.idPendaftar = idPendaftar;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setKodeSeleksi(int kodeSeleksi) {
+        this.kodeSeleksi = kodeSeleksi;
     }
 
     public String getNama() {
@@ -82,7 +68,13 @@ public class Pendaftar {
         this.umur = umur;
     }
 
- 
-    
-    
+    public String getJudulMagang() {
+        return judulMagang;
+    }
+
+    public void setJudulMagang(String judulMagang) {
+        this.judulMagang = judulMagang;
+    }
+
+        
 }

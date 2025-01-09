@@ -15,7 +15,6 @@ import org.itenas.oop.project.connection.ConnectionManager;
 import org.itenas.oop.project.model.Magang;
 
 public class ControllerMagang {
-    Scanner input = new Scanner(System.in);
     ConnectionManager conMan = new ConnectionManager();
     Connection con = conMan.connectDb();
     String pendaftar = null;
@@ -42,7 +41,7 @@ public class ControllerMagang {
         try {
             Statement stm = con.createStatement();
             String penyelenggara = mengambilInstansi();
-            String query2 = "INSERT INTO daftarmagang "
+            String query2 = "INSERT INTO daftar_magang "
                 + "(judul, penyelenggara, lokasi, tipe, posisi, deskripsi, kualifikasi)"
                 + "values ('" + judulMagang + "', '" + penyelenggara + "', '" + lokasi + "', '" + tipeMagang + "', '" + posisiMagang + "', '" + deskripsiMagang + "', '" + kualifikasiMagang + "')";
         
@@ -59,7 +58,7 @@ public class ControllerMagang {
 
 
     public boolean updateMagang(String judulMagang, String penyelenggara, String lokasi, String tipeMagang, String posisiMagang, String deskripsiMagang, String kualifikasiMagang, String judul){
-        String query = "UPDATE daftarmagang SET judul = '"
+        String query = "UPDATE daftar_magang SET judul = '"
                 + judulMagang + "', penyelenggara = '"
                 + penyelenggara + "', lokasi = '"                
                 + lokasi + "', tipe = '"
@@ -79,7 +78,7 @@ public class ControllerMagang {
     }    
     
     public boolean deleteMagang(String judulMagang){
-        String query = "DELETE FROM daftarmagang WHERE judul = '" + judulMagang + "'";
+        String query = "DELETE FROM daftar_magang WHERE judul = '" + judulMagang + "'";
         try {
             Statement stm = con.createStatement();
             stm.executeUpdate(query);
@@ -94,7 +93,7 @@ public class ControllerMagang {
         Magang magang = new Magang();
         try{
             Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM daftarmagang WHERE judul LIKE '%" + judulMagang + "%'");
+            ResultSet rs = stm.executeQuery("SELECT * FROM daftar_magang WHERE judul LIKE '%" + judulMagang + "%'");
             while (rs.next()){
                 magang.setJudulMagang(rs.getString("judul"));
                 magang.setPenyelenggara(rs.getString("penyelenggara"));
@@ -114,7 +113,7 @@ public class ControllerMagang {
         List<Magang> listMagang = new ArrayList<Magang>();
         try {
             Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM daftarmagang");
+            ResultSet rs = stm.executeQuery("SELECT * FROM daftar_magang");
             while (rs.next()) {                
                 Magang magang = new Magang();
                 magang.setJudulMagang(rs.getString("judul"));

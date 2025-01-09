@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import org.itenas.oop.project.event.EventMenuSelected;
 import org.itenas.oop.project.component.TambahAdminForm;
 import org.itenas.oop.project.component.MelihatDaftarAdmin;
-import org.itenas.oop.project.component.MelihatDaftarMagang;
+import org.itenas.oop.project.component.MelihatDaftarMagangAdminDanPenyelenggara;
 import org.itenas.oop.project.component.MelihatDaftarPenyelenggara;
 import org.itenas.oop.project.component.SeleksiPendaftarForm;
 
@@ -33,7 +33,7 @@ public class MainAdminForm2 extends javax.swing.JFrame {
                 } else if (index == 1) {
                     setForm(new MelihatDaftarAdmin());
                 } else if (index == 2) {
-                    setForm(new MelihatDaftarMagang());
+                    setForm(new MelihatDaftarMagangAdminDanPenyelenggara());
                 } else if (index == 3) {
                     setForm(new MelihatDaftarPenyelenggara());
                 } else if (index == 4) {
@@ -68,23 +68,11 @@ public class MainAdminForm2 extends javax.swing.JFrame {
 
         panelBorder1 = new org.itenas.oop.project.panel.PanelBorder();
         menu = new org.itenas.oop.project.component.MenuAdmin();
-        header1 = new org.itenas.oop.project.component.Header();
         MainPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panelBorder1.setBackground(new java.awt.Color(231, 227, 217));
-
-        javax.swing.GroupLayout header1Layout = new javax.swing.GroupLayout(header1);
-        header1.setLayout(header1Layout);
-        header1Layout.setHorizontalGroup(
-            header1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 730, Short.MAX_VALUE)
-        );
-        header1Layout.setVerticalGroup(
-            header1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 49, Short.MAX_VALUE)
-        );
 
         MainPanel.setBackground(new java.awt.Color(246, 244, 240));
         MainPanel.setOpaque(false);
@@ -96,12 +84,8 @@ public class MainAdminForm2 extends javax.swing.JFrame {
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(header1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelBorder1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(6, 6, 6)
+                .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         panelBorder1Layout.setVerticalGroup(
@@ -110,8 +94,7 @@ public class MainAdminForm2 extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelBorder1Layout.createSequentialGroup()
-                        .addComponent(header1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(57, 57, 57)
                         .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -175,7 +158,6 @@ public class MainAdminForm2 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
-    private org.itenas.oop.project.component.Header header1;
     private org.itenas.oop.project.component.MenuAdmin menu;
     private org.itenas.oop.project.panel.PanelBorder panelBorder1;
     // End of variables declaration//GEN-END:variables

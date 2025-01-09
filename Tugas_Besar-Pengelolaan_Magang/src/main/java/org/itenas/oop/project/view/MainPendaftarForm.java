@@ -4,17 +4,75 @@
  */
 package org.itenas.oop.project.view;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JComponent;
+import javax.swing.JOptionPane;
+import org.itenas.oop.project.component.DataDiriPenyelenggara;
+import org.itenas.oop.project.event.EventMenuSelected;
+import org.itenas.oop.project.component.KelolaMagangForm;
+import org.itenas.oop.project.component.MelihatDaftarMagangAdminDanPenyelenggara;
+import org.itenas.oop.project.component.SeleksiPendaftarForm;
+import org.itenas.oop.project.connection.ConnectionManager;
+
 /**
  *
  * @author aryan
  */
 public class MainPendaftarForm extends javax.swing.JFrame {
-
-    /**
-     * Creates new form MainPendaftarForm
-     */
+    private ConnectionManager conMan;
+    private Connection conn;
+    
     public MainPendaftarForm() {
         initComponents();
+        menuPendaftar1.initMoving(MainPendaftarForm.this);
+        menuPendaftar1.addEventMenuSelected(new EventMenuSelected(){
+            @Override
+            public void selected (int index){
+                if (index == 0){
+                    setForm(new KelolaMagangForm());
+                }else if(index == 1){
+                    setForm(new MelihatDaftarMagangAdminDanPenyelenggara());
+                }else if(index == 2){
+                    setForm(new SeleksiPendaftarForm());
+                }else if(index == 3){
+                    int konfirmasi = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin ingin logout?", "Konfirmasi Logout", JOptionPane.YES_NO_OPTION);
+                    if (konfirmasi == JOptionPane.YES_NO_OPTION) {  
+                        try {
+                            conMan = new ConnectionManager();
+                            conn = conMan.connectDb();
+                            Statement stm = conn.createStatement();
+                            stm.executeUpdate("TRUNCATE TABLE temp_daftar_akun;");                            
+                        } catch (SQLException ex) {
+                            System.out.println("error: " + ex.getMessage());                            
+                        }
+                        dispose();
+                        new LoginUtama().setVisible(true);
+                        
+                    }
+                }
+            }   
+        });
+        
+        headerMenu1.initMoving(MainPendaftarForm.this);
+        headerMenu1.addEventMenuSelected(new EventMenuSelected(){
+            @Override
+            public void selected (int index){
+                if (index == 0){
+                    setForm(new DataDiriPenyelenggara());
+                }
+            }   
+        });
+    }
+    
+    private void setForm(JComponent com){
+        MainPanel.removeAll();
+        MainPanel.add(com);
+        MainPanel.repaint();
+        MainPanel.revalidate();
     }
 
     /**
@@ -26,17 +84,51 @@ public class MainPendaftarForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelBorder1 = new org.itenas.oop.project.panel.PanelBorder();
+        MainPanel = new javax.swing.JPanel();
+        headerMenu1 = new org.itenas.oop.project.component.HeaderMenu();
+        menuPendaftar1 = new org.itenas.oop.project.component.MenuPendaftar();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        panelBorder1.setBackground(new java.awt.Color(231, 227, 217));
+
+        MainPanel.setBackground(new java.awt.Color(246, 244, 240));
+        MainPanel.setOpaque(false);
+        MainPanel.setLayout(new java.awt.BorderLayout());
+
+        javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
+        panelBorder1.setLayout(panelBorder1Layout);
+        panelBorder1Layout.setHorizontalGroup(
+            panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBorder1Layout.createSequentialGroup()
+                .addComponent(menuPendaftar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 724, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(headerMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        panelBorder1Layout.setVerticalGroup(
+            panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBorder1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(menuPendaftar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelBorder1Layout.createSequentialGroup()
+                        .addComponent(headerMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -68,6 +160,21 @@ public class MainPendaftarForm extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainPendaftarForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -78,5 +185,9 @@ public class MainPendaftarForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel MainPanel;
+    private org.itenas.oop.project.component.HeaderMenu headerMenu1;
+    private org.itenas.oop.project.component.MenuPendaftar menuPendaftar1;
+    private org.itenas.oop.project.panel.PanelBorder panelBorder1;
     // End of variables declaration//GEN-END:variables
 }

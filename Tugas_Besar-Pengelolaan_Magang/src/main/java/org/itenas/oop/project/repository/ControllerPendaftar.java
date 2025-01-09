@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Scanner;
 import org.itenas.oop.project.connection.ConnectionManager;
 import org.itenas.oop.project.model.Magang;
+import org.itenas.oop.project.model.MagangPendaftar;
 
 import org.itenas.oop.project.model.Pendaftar;
 
@@ -94,40 +95,58 @@ Scanner input = new Scanner(System.in);
         }
     }*/
     
-    public Pendaftar mencariBerdasarkanNama(String namaPendaftar){
-        Pendaftar pendaftar = new Pendaftar();
+    public MagangPendaftar mencariMagangPendaftarBerdasarkanNama(String namaPendaftar){
+        MagangPendaftar magangPendaftar = new MagangPendaftar();
         try{
             Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM daftarpendaftar WHERE nama LIKE '%" + namaPendaftar + "%'");
+            ResultSet rs = stm.executeQuery("SELECT * FROM daftar_pendaftar_magang WHERE nama LIKE '%" + namaPendaftar + "%'");
             while (rs.next()){
-                pendaftar.setNama(rs.getString("nama"));
+                magangPendaftar.setNama(rs.getString("nama"));
             }
         }catch(SQLException ex){
             System.out.println(ex.toString());
         }    
-        return pendaftar;
+        return magangPendaftar;
     }
 
-    public List<Pendaftar> showPendaftar(){
-        List<Pendaftar> listPendaftar = new ArrayList<Pendaftar>();
+    public List<MagangPendaftar> showPendaftarBerdasarkanMagang(String judulMagang){
+        List<MagangPendaftar> listMagangPendaftar = new ArrayList<MagangPendaftar>();
         try {
             Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM daftarpendaftar");
-            while (rs.next()) {                
-                Pendaftar pendaftar = new Pendaftar();
-                pendaftar.setIdPendaftar(rs.getString("id_pendaftar"));
-                pendaftar.setUsername(rs.getString("username"));
-                pendaftar.setPassword(rs.getString("password"));
-                pendaftar.setNama(rs.getString("nama"));
-                pendaftar.setJenisKelamin(rs.getString("jenis_kelamin"));
-                pendaftar.setPendidikanSaatIni(rs.getString("pendidikan_saat_ini"));
-                pendaftar.setUmur(rs.getInt("umur"));
-
-                listPendaftar.add(pendaftar);
+            ResultSet rs = stm.executeQuery("SELECT * FROM daftar_pendaftar_magang WHERE judul = '" + judulMagang + "';");
+            while (rs.next()) {  
+                MagangPendaftar magangPendaftar = new MagangPendaftar();
+                magangPendaftar.setKodeSeleksi(rs.getInt("kode_seleksi"));
+                magangPendaftar.setNama(rs.getString("nama"));
+                magangPendaftar.setJenisKelamin(rs.getString("jenis_kelamin"));
+                magangPendaftar.setPendidikanSaatIni(rs.getString("pendidikan_saat_ini"));
+                magangPendaftar.setUmur(rs.getInt("umur"));
+                magangPendaftar.setJudulMagang(rs.getString("judul"));
+                
+                listMagangPendaftar.add(magangPendaftar);
             }
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
-        return listPendaftar;
-    }       
+        return listMagangPendaftar;
+    }
+    
+    public boolean insertMagangPendaftar(String nama, String jenisKelamin, String pendidikanSaatIni, int umur, String judul){
+    
+        try {
+            Statement stm = con.createStatement();
+            String query = "INSERT INTO daftar_pendaftar_magang "
+                + "(nama, jenis_kelamin, pendidikan_saat_ini, umur, judul)"
+                + "values ('" + nama + "', '" + jenisKelamin + "', '" + pendidikanSaatIni + "', '" + umur + "', '" + judul + "')";
+        
+            stm.executeUpdate(query);
+            
+            return true;
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            return false;
+        }         
+    }
+    
+    //public List<Magang>
 }
