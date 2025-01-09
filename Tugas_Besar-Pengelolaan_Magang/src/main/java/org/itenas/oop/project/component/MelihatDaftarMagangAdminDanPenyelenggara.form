@@ -23,20 +23,39 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jScrollPane1" min="-2" pref="245" max="-2" attributes="0"/>
+<<<<<<< HEAD
               <EmptySpace max="-2" attributes="0"/>
               <Component id="cardMagang1" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+=======
+<<<<<<< HEAD
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="cardMagang1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+=======
+              <EmptySpace min="0" pref="473" max="32767" attributes="0"/>
+>>>>>>> f0d96a677e5fbd60c52133207f422fc770f230fd
+>>>>>>> bc63cade28a926e191ad08d04d3967c1b45fb449
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jScrollPane1" alignment="0" pref="665" max="32767" attributes="0"/>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> bc63cade28a926e191ad08d04d3967c1b45fb449
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="cardMagang1" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> f0d96a677e5fbd60c52133207f422fc770f230fd
+>>>>>>> bc63cade28a926e191ad08d04d3967c1b45fb449
       </Group>
     </DimensionLayout>
   </Layout>
@@ -46,9 +65,18 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
+<<<<<<< HEAD
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
+=======
+<<<<<<< HEAD
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
+=======
+>>>>>>> f0d96a677e5fbd60c52133207f422fc770f230fd
+>>>>>>> bc63cade28a926e191ad08d04d3967c1b45fb449
       </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
@@ -56,7 +84,15 @@
         <Container class="javax.swing.JPanel" name="jPanel3">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+<<<<<<< HEAD
               <Color blue="e5" green="ec" red="ef" type="rgb"/>
+=======
+<<<<<<< HEAD
+              <Color blue="e5" green="ec" red="ef" type="rgb"/>
+=======
+              <Color blue="ff" green="99" red="99" type="rgb"/>
+>>>>>>> f0d96a677e5fbd60c52133207f422fc770f230fd
+>>>>>>> bc63cade28a926e191ad08d04d3967c1b45fb449
             </Property>
           </Properties>
 
@@ -65,29 +101,75 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
+<<<<<<< HEAD
                       <Component id="jPanel4" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+=======
+<<<<<<< HEAD
+                      <Component id="jPanel4" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+=======
+                      <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="110" max="32767" attributes="0"/>
+>>>>>>> f0d96a677e5fbd60c52133207f422fc770f230fd
+>>>>>>> bc63cade28a926e191ad08d04d3967c1b45fb449
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+<<<<<<< HEAD
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="708" max="32767" attributes="0"/>
+=======
+<<<<<<< HEAD
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="708" max="32767" attributes="0"/>
+=======
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="622" max="32767" attributes="0"/>
+>>>>>>> f0d96a677e5fbd60c52133207f422fc770f230fd
+>>>>>>> bc63cade28a926e191ad08d04d3967c1b45fb449
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
+<<<<<<< HEAD
             <Container class="org.itenas.oop.project.component.CardMagang" name="jPanel4">
+=======
+<<<<<<< HEAD
+            <Container class="org.itenas.oop.project.component.CardMagang" name="jPanel4">
+=======
+            <Container class="javax.swing.JPanel" name="jPanel4">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+              </Properties>
+>>>>>>> f0d96a677e5fbd60c52133207f422fc770f230fd
+>>>>>>> bc63cade28a926e191ad08d04d3967c1b45fb449
 
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
+<<<<<<< HEAD
                           <EmptySpace pref="145" max="32767" attributes="0"/>
+=======
+<<<<<<< HEAD
+                          <EmptySpace pref="145" max="32767" attributes="0"/>
+=======
+                          <EmptySpace pref="141" max="32767" attributes="0"/>
+>>>>>>> f0d96a677e5fbd60c52133207f422fc770f230fd
+>>>>>>> bc63cade28a926e191ad08d04d3967c1b45fb449
                           <Component id="Detail" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -136,6 +218,10 @@
         </Container>
       </SubComponents>
     </Container>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> bc63cade28a926e191ad08d04d3967c1b45fb449
     <Container class="org.itenas.oop.project.component.CardMagang" name="cardMagang1">
 
       <Layout>
@@ -305,5 +391,10 @@
         </Component>
       </SubComponents>
     </Container>
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> f0d96a677e5fbd60c52133207f422fc770f230fd
+>>>>>>> bc63cade28a926e191ad08d04d3967c1b45fb449
   </SubComponents>
 </Form>

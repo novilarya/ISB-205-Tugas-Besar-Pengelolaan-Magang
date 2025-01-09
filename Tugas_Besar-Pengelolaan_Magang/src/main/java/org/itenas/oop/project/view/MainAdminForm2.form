@@ -45,9 +45,23 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="menu" min="-2" pref="208" max="-2" attributes="0"/>
+<<<<<<< HEAD
                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   <Component id="MainPanel" pref="726" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+=======
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                          <Component id="MainPanel" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="headerMenu1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+>>>>>>> bc63cade28a926e191ad08d04d3967c1b45fb449
               </Group>
           </Group>
         </DimensionLayout>
@@ -56,8 +70,14 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
+<<<<<<< HEAD
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+=======
+                      <Group type="102" attributes="0">
+                          <Component id="headerMenu1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+>>>>>>> bc63cade28a926e191ad08d04d3967c1b45fb449
                           <Component id="MainPanel" max="32767" attributes="0"/>
                       </Group>
                       <Component id="menu" min="-2" max="-2" attributes="0"/>
@@ -80,6 +100,8 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
         </Container>
+        <Component class="org.itenas.oop.project.component.HeaderMenu" name="headerMenu1">
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

@@ -4,21 +4,28 @@
  */
 package org.itenas.oop.project.view;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import org.itenas.oop.project.component.DataDiriAdmin;
+import org.itenas.oop.project.component.DataDiriPenyelenggara;
 import org.itenas.oop.project.event.EventMenuSelected;
 import org.itenas.oop.project.component.TambahAdminForm;
 import org.itenas.oop.project.component.MelihatDaftarAdmin;
 import org.itenas.oop.project.component.MelihatDaftarMagangAdminDanPenyelenggara;
 import org.itenas.oop.project.component.MelihatDaftarPenyelenggara;
 import org.itenas.oop.project.component.SeleksiPendaftarForm;
+import org.itenas.oop.project.connection.ConnectionManager;
 
 /**
  *
  * @author aryan
  */
 public class MainAdminForm2 extends javax.swing.JFrame {
-
+    private ConnectionManager conMan;
+    private Connection conn;
     /**
      * Creates new form MainPenyelenggara
      */
@@ -39,13 +46,32 @@ public class MainAdminForm2 extends javax.swing.JFrame {
                 } else if (index == 4) {
                     int konfirmasi = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin ingin logout?", "Konfirmasi Logout", JOptionPane.YES_NO_OPTION);
                     if (konfirmasi == JOptionPane.YES_NO_OPTION) {       
+                        try {
+                            conMan = new ConnectionManager();
+                            conn = conMan.connectDb();
+                            Statement stm = conn.createStatement();
+                            stm.executeUpdate("TRUNCATE TABLE temp_daftar_akun;");                            
+                        } catch (SQLException ex) {
+                            System.out.println("error: " + ex.getMessage());                            
+                        }
                         dispose();
                         new LoginUtama().setVisible(true);
                     }
                 }
             }
         });
+        headerMenu1.initMoving(MainAdminForm2.this);
+        headerMenu1.addEventMenuSelected(new EventMenuSelected(){
+            @Override
+            public void selected (int index){
+                if (index == 0){
+                    setForm(new DataDiriAdmin());
+                }
+            }   
+        });
     }
+    
+    
 
     
     
@@ -56,6 +82,7 @@ public class MainAdminForm2 extends javax.swing.JFrame {
         MainPanel.repaint();
         MainPanel.revalidate();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -69,6 +96,7 @@ public class MainAdminForm2 extends javax.swing.JFrame {
         panelBorder1 = new org.itenas.oop.project.panel.PanelBorder();
         menu = new org.itenas.oop.project.component.MenuAdmin();
         MainPanel = new javax.swing.JPanel();
+        headerMenu1 = new org.itenas.oop.project.component.HeaderMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,9 +112,20 @@ public class MainAdminForm2 extends javax.swing.JFrame {
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                 .addGap(6, 6, 6)
                 .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
+=======
+                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBorder1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelBorder1Layout.createSequentialGroup()
+                        .addGap(0, 0, 0)
+                        .addComponent(headerMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+>>>>>>> bc63cade28a926e191ad08d04d3967c1b45fb449
         );
         panelBorder1Layout.setVerticalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,7 +133,12 @@ public class MainAdminForm2 extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelBorder1Layout.createSequentialGroup()
+<<<<<<< HEAD
                         .addGap(57, 57, 57)
+=======
+                        .addComponent(headerMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+>>>>>>> bc63cade28a926e191ad08d04d3967c1b45fb449
                         .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -158,6 +202,10 @@ public class MainAdminForm2 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
+<<<<<<< HEAD
+=======
+    private org.itenas.oop.project.component.HeaderMenu headerMenu1;
+>>>>>>> bc63cade28a926e191ad08d04d3967c1b45fb449
     private org.itenas.oop.project.component.MenuAdmin menu;
     private org.itenas.oop.project.panel.PanelBorder panelBorder1;
     // End of variables declaration//GEN-END:variables

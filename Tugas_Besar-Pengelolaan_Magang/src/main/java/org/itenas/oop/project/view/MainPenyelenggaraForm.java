@@ -37,7 +37,7 @@ public class MainPenyelenggaraForm extends javax.swing.JFrame {
                 }else if(index == 1){
                     setForm(new MelihatDaftarMagangAdminDanPenyelenggara());
                 }else if(index == 2){
-                    setForm(new SeleksiPendaftarForm());
+//                    setForm(new SeleksiPendaftarForm());
                 }else if(index == 3){
                     int konfirmasi = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin ingin logout?", "Konfirmasi Logout", JOptionPane.YES_NO_OPTION);
                     if (konfirmasi == JOptionPane.YES_NO_OPTION) {  
